@@ -1,0 +1,15 @@
+[package]
+name = "scancraft-export"
+description = "ScanCraft export: minimal PDF writer, TIFF/JPEG/PNG, filename templates, atomic writes."
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+rust-version.workspace = true
+
+[lints]
+workspace = true
+
+[dependencies]
+scancraft-imaging = { workspace = true }
+image = { workspace = true }
+flate2 = { workspace = true }

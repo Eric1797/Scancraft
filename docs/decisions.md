@@ -81,3 +81,23 @@ Options:
 - PdfCraft uses JSON (`serde_json`) for settings + TOML for manifests;
   profiles/settings will be versioned + migrated + atomic + `.bak` fallback.
   Confirm exact files during skeleton work.
+
+## D9. Imaging codecs: `image` + `flate2` + `rfd` (decided M2)
+
+- `image 0.25` (features png/jpeg/tiff/bmp/gif only): decode/encode breadth
+  without C deps. Same crate PdfCraft already vets. Justification for CI:
+  pure Rust, no libtiff/libjpeg-turbo, minimal feature set.
+- `flate2 1.1` (`rust_backend`): PDF FlateDecode streams.
+- `rfd 0.17`: native folder picker in the Save dialog (Windows-first;
+  Linux CI already installs GTK).
+- No async runtime, no rayon (std threads + channels only, per D7).
+
+## D10. Export limits shipped knowingly in M2 (all in feature-matrix)
+
+- PDF images are Flate RGB (no JPEG pass-through yet, no G4 1-bit yet).
+- TIFF is uncompressed RGB with DPI tags (LZW/G4 later).
+- JPEG/PNG singles carry no DPI metadata yet (image-crate encoders lack
+  the fields; M2b).
+- No encryption (M2b), no OCR layer (M5), no PDF/A (later).
+- Save runs on a worker thread; edit-stack rendering still on the UI
+  thread for small pages (moves off-thread with the session cache, M2b).

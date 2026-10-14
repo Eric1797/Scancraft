@@ -11,6 +11,8 @@ use std::fmt;
 use scancraft_model::{EditOp, ModelError, Page, Project};
 use scancraft_scan_core::{CancelToken, PageSink, Progress, RawPage, ScanError, ScanRequest, ScannerBackend};
 
+pub mod commands;
+
 /// Open-document handle.
 #[derive(Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct DocId(pub u64);
@@ -28,15 +30,26 @@ pub struct Document {
     project: Project,
     undo: Vec<UndoStep>,
     redo: Vec<UndoStep>,
+    dirty: bool,
 }
 
 impl Document {
     pub fn new(project: Project) -> Self {
-        Self { project, undo: Vec::new(), redo: Vec::new() }
+        Self { project, undo: Vec::new(), redo: Vec::new(), dirty: false }
     }
 
     pub fn project(&self) -> &Project {
         &self.project
+    }
+
+    /// True since the last save (M2 clears it). Tabs show a dot for this.
+    pub fn dirty(&self) -> bool {
+        self.dirty
+    }
+
+    /// Called after a successful save/export (M2).
+    pub fn mark_saved(&mut self) {
+        self.dirty = false;
     }
 
     pub fn can_undo(&self) -> bool {
@@ -58,6 +71,7 @@ impl Document {
             self.undo.remove(0);
         }
         self.redo.clear();
+        self.dirty = true;
     }
 
     /// Undo one step. Returns the step label, if any.
@@ -120,6 +134,42 @@ impl Document {
         let mut next = self.project.clone();
         next.pages.reverse();
         self.commit("Reverse order", next);
+    }
+
+    /// Interleave for single-sided feeders that scanned both sides in two
+    /// runs: `[1,3,5,2,4,6]` → `[1,2,3,4,5,6]`. Needs an even page count.
+    pub fn interleave(&mut self) -> Result<(), EngineError> {
+        let n = self.project.pages.len();
+        if !n.is_multiple_of(2) {
+            return Err(EngineError::NeedsEvenPageCount);
+        }
+        let mut next = self.project.clone();
+        let backs = next.pages.split_off(n / 2);
+        let fronts = std::mem::replace(&mut next.pages, Vec::with_capacity(n));
+        for (f, b) in fronts.into_iter().zip(backs) {
+            next.pages.push(f);
+            next.pages.push(b);
+        }
+        self.commit("Interleave pages", next);
+        Ok(())
+    }
+
+    /// Undo an interleave: `[1,2,3,4,5,6]` → `[1,3,5,2,4,6]`.
+    pub fn deinterleave(&mut self) -> Result<(), EngineError> {
+        let n = self.project.pages.len();
+        if !n.is_multiple_of(2) {
+            return Err(EngineError::NeedsEvenPageCount);
+        }
+        let mut next = self.project.clone();
+        let mut odds = Vec::with_capacity(n / 2);
+        let mut evens = Vec::with_capacity(n / 2);
+        for (i, page) in next.pages.drain(..).enumerate() {
+            if i.is_multiple_of(2) { odds.push(page) } else { evens.push(page) }
+        }
+        next.pages = odds;
+        next.pages.extend(evens);
+        self.commit("De-interleave pages", next);
+        Ok(())
     }
 
     /// Record one non-destructive edit on a page as a single undo step.
@@ -245,6 +295,7 @@ impl PageSink for CollectingSink<'_> {
 #[derive(Debug, Clone, PartialEq, Eq)]
 pub enum EngineError {
     UnknownDocument,
+    NeedsEvenPageCount,
     Model(ModelError),
     Scan(ScanError),
 }
@@ -253,6 +304,7 @@ impl fmt::Display for EngineError {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
         match self {
             EngineError::UnknownDocument => write!(f, "unknown document"),
+            EngineError::NeedsEvenPageCount => write!(f, "interleave needs an even page count"),
             EngineError::Model(e) => write!(f, "{e}"),
             EngineError::Scan(e) => write!(f, "{e}"),
         }
@@ -343,5 +395,45 @@ mod tests {
         session.get_mut(id).unwrap().redo();
         session.get_mut(id).unwrap().clear_edits(1).unwrap();
         assert!(session.get(id).unwrap().project.pages[0].edits.is_empty());
+    }
+
+    #[test]
+    fn interleave_roundtrip() {
+        let mut session = Session::new();
+        let id = session.open(Project { title: "t".to_owned(), pages: vec![page(1), page(3), page(5), page(2), page(4), page(6)] });
+        session.get_mut(id).unwrap().interleave().unwrap();
+        let order: Vec<u64> = session.get(id).unwrap().project.pages.iter().map(|p| p.id).collect();
+        assert_eq!(order, vec![1, 2, 3, 4, 5, 6]);
+        session.get_mut(id).unwrap().deinterleave().unwrap();
+        let order: Vec<u64> = session.get(id).unwrap().project.pages.iter().map(|p| p.id).collect();
+        assert_eq!(order, vec![1, 3, 5, 2, 4, 6]);
+    }
+
+    #[test]
+    fn interleave_rejects_odd_counts() {
+        let mut session = Session::new();
+        let id = session.open(Project { title: "t".to_owned(), pages: vec![page(1), page(2), page(3)] });
+        assert_eq!(session.get_mut(id).unwrap().interleave(), Err(EngineError::NeedsEvenPageCount));
+        assert_eq!(session.get_mut(id).unwrap().deinterleave(), Err(EngineError::NeedsEvenPageCount));
+    }
+
+    #[test]
+    fn dirty_tracks_unsaved_changes() {
+        let mut session = Session::new();
+        let id = session.open(Project::default());
+        assert!(!session.get(id).unwrap().dirty());
+        session.get_mut(id).unwrap().reverse_order();
+        assert!(session.get(id).unwrap().dirty());
+        session.get_mut(id).unwrap().mark_saved();
+        assert!(!session.get(id).unwrap().dirty());
+    }
+
+    #[test]
+    fn command_table_has_stable_ids() {
+        use crate::commands::{COMMANDS, command};
+        assert!(COMMANDS.iter().any(|c| c.id == "scan"));
+        assert!(COMMANDS.iter().any(|c| c.id == "save-pdf"));
+        assert_eq!(command("undo").map(|c| c.label), Some("Undo"));
+        assert_eq!(command("nope"), None);
     }
 }

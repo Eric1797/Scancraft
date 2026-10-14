@@ -13,6 +13,8 @@ use std::sync::Arc;
 
 use egui::{Color32, CornerRadius, FontData, FontDefinitions, FontFamily, FontId, Stroke, Visuals};
 
+pub mod palette;
+
 #[derive(Clone, Copy, Debug, PartialEq, Eq, Default)]
 pub enum ThemeKind {
     #[default]
