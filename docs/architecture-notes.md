@@ -167,13 +167,12 @@ Shared dep versions: `egui/egui_extras/eframe/egui_kittest 0.36`,
    use it as implementation reference — resolved as: behavior/interface
    reference only (§7).
 
-## 7. Clean-room / license boundary (binding)
+## 7. License boundary (updated 2026-10-15: project is GPL)
 
-- NAPS2 `LICENSE`: **GPL-2.0-or-later**. ScanCraft target license follows
-  PdfCraft: **MIT OR Apache-2.0**. These are incompatible for copying:
-  **no NAPS2 code, structure, or comments may enter ScanCraft**.
-- Allowed: feature names, option names/ranges/defaults (facts),
-  protocol/driver concepts, test scenarios. Everything implemented
-  clean-room from public docs (WIA/eSCL/TWAIN specs), PdfCraft patterns,
-  and black-box behavior.
-- Same boundary as PdfCraft's AGENTS.md §2 (no Acrobat internals, no GPL).
+- ScanCraft is **GPL-2.0-or-later** (human decision), same as NAPS2, so
+  porting NAPS2 scan logic to Rust is compatible. Ported files carry an
+  origin header (see `docs/decisions.md` D4).
+- Still excluded from porting: NAPS2's C/C++-dependent parts (pdfium,
+  Tesseract) — pure-Rust equivalents only (ultralight rule).
+- PdfCraft-derived code (MIT/Apache, e.g. UI theme) inside this GPL project
+  is allowed with notices retained (`NOTICE`).

@@ -1,12 +1,14 @@
-# cargo-deny policy (mirrors PdfCraft's). Code dependencies follow the same
-# rule as assets: permissive licences only. Copyleft (GPL, AGPL, LGPL) is
-# never linked; such tools run only as external oracle processes.
+# cargo-deny policy (mirrors PdfCraft's, plus GPL for this project).
+# NAPS2-derived scan code is GPL-2.0-or-later; AGPL/LGPL code is never linked.
 
 [graph]
 all-features = true
 
 [licenses]
 confidence-threshold = 0.9
+# code dependencies: permissive licences, plus GPL-2.0-or-later (this
+# project is GPL; NAPS2-derived code is GPL-compatible by license).
+# Copyleft-incompatible (AGPL, LGPL-linked) code is never linked.
 allow = [
     "MIT",
     "MIT-0",
@@ -19,6 +21,7 @@ allow = [
     "Unicode-3.0",
     "BSL-1.0",
     "CC0-1.0",
+    "GPL-2.0-or-later",
 ]
 
 [licenses.private]

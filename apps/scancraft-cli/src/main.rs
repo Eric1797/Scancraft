@@ -14,6 +14,8 @@ use scancraft_model::ScanProfile;
 use scancraft_scan_core::{CancelToken, PageSink, Progress, RawPage, ScanError, ScanRequest, ScannerBackend};
 use scancraft_scan_escl::EsclScanner;
 use scancraft_scan_mock::MockScanner;
+use scancraft_scan_twain::TwainScanner;
+use scancraft_scan_wia::WiaScanner;
 
 fn usage() -> &'static str {
     "scancraft-cli [--help] [--version] <command>\n\nCommands:\n  devices [--host URL]   list scanners (mock + probed eSCL hosts)\n  profiles               list built-in profiles\n  scan --pages N --dpi D --out FILE [--format pdf|tiff|jpg|png] [--quality Q] [--force]\n       [--device ID]    scan straight to a file (default device: mock demo scanner)\n"
@@ -127,6 +129,12 @@ fn scan_to_file(argv: &[String]) -> Result<(), String> {
     if request.device.0.starts_with("escl:") {
         let host = request.device.0.trim_start_matches("escl:").to_owned();
         let backend = EsclScanner::with_hosts(vec![host]);
+        scan_with(&backend, &request, &out, format.as_deref(), quality, force)
+    } else if request.device.0.starts_with("wia:") {
+        let backend = WiaScanner::default();
+        scan_with(&backend, &request, &out, format.as_deref(), quality, force)
+    } else if request.device.0.starts_with("twain:") {
+        let backend = TwainScanner;
         scan_with(&backend, &request, &out, format.as_deref(), quality, force)
     } else {
         let backend = MockScanner { pages, ..Default::default() };

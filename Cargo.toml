@@ -7,7 +7,7 @@ members = ["crates/*", "apps/*"]
 [workspace.package]
 version = "0.1.0"
 edition = "2024"
-license = "MIT OR Apache-2.0"
+license = "GPL-2.0-or-later"
 rust-version = "1.90"
 
 [workspace.dependencies]
@@ -19,6 +19,8 @@ scancraft-ui-kit = { path = "crates/scancraft-ui-kit", version = "0.1.0" }
 scancraft-imaging = { path = "crates/scancraft-imaging", version = "0.1.0" }
 scancraft-export = { path = "crates/scancraft-export", version = "0.1.0" }
 scancraft-scan-escl = { path = "crates/scancraft-scan-escl", version = "0.1.0" }
+scancraft-scan-wia = { path = "crates/scancraft-scan-wia", version = "0.1.0" }
+scancraft-scan-twain = { path = "crates/scancraft-scan-twain", version = "0.1.0" }
 
 # UI (same versions as PdfCraft)
 egui = "0.36"

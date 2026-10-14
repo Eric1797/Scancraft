@@ -1,13 +1,18 @@
-ScanCraft is licensed MIT OR Apache-2.0 (see LICENSE-MIT / LICENSE-APACHE
-to be added before first release; all code in this repo is original except
-as noted below).
+ScanCraft is licensed GPL-2.0-or-later (see LICENSE).
 
-## Derived work
+## Provenance
 
+- Scan logic (WIA/TWAIN/eSCL drivers, profiles, post-processing structure)
+  is ported from NAPS2 — Not Another PDF Scanner
+  (https://www.naps2.com, Copyright NAPS2 Contributors, GPL-2.0-or-later).
+  Ported files carry a header naming their NAPS2 origin. The C# reference
+  snapshot in this repo (`naps2-in c++-master #For Reference/`) is itself
+  GPL-2.0-or-later, so the licenses are compatible.
 - `crates/scancraft-ui-kit/src/theme.rs`: design tokens and egui style
   derived from PdfCraft `crates/ui-egui/src/theme.rs`
   (Copyright PdfCraft contributors, MIT OR Apache-2.0,
-  https://github.com/storytold/pdfcraft). Token values (light/dark color
+  https://github.com/storytold/pdfcraft). Permissive code inside a GPL
+  project: allowed, notices retained here. Token values (light/dark color
   tables, spacing, text styles) are intentionally identical so ScanCraft
   looks like PdfCraft. Adapted: temp key renamed, font loading pointed at
   ScanCraft's own `assets/fonts`, CJK/system-fallback loading removed

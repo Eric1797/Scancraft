@@ -14,6 +14,8 @@ scancraft-model = { workspace = true }
 scancraft-scan-core = { workspace = true }
 scancraft-scan-mock = { workspace = true }
 scancraft-scan-escl = { workspace = true }
+scancraft-scan-wia = { workspace = true }
+scancraft-scan-twain = { workspace = true }
 scancraft-engine = { workspace = true }
 scancraft-imaging = { workspace = true }
 scancraft-export = { workspace = true }

@@ -18,6 +18,8 @@ scancraft-ui-kit = { workspace = true }
 scancraft-imaging = { workspace = true }
 scancraft-export = { workspace = true }
 scancraft-scan-escl = { workspace = true }
+scancraft-scan-wia = { workspace = true }
+scancraft-scan-twain = { workspace = true }
 egui = { workspace = true }
 rfd = { workspace = true }
 eframe = { workspace = true, features = ["default_fonts", "wgpu", "accesskit"] }

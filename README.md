@@ -5,6 +5,9 @@ scan → organize → export PDF/TIFF/JPEG/PNG with optional OCR text layer.
 A sibling of [PdfCraft](https://github.com/storytold/pdfcraft): same visual
 language, same command palette, same dark/light themes.
 
+Scan logic is ported from [NAPS2](https://www.naps2.com) (C#); like NAPS2,
+this project is **GPL-2.0-or-later** (see `LICENSE`).
+
 > M0 complete (discovery + skeleton). M1 in progress (app shell + mock scanner).
 
 ## Layout
@@ -42,6 +45,5 @@ to `main` (`.github/workflows/exe.yml`) and attached as an artifact.
   crates with `// SAFETY:` comments; everything else
   `#![forbid(unsafe_code)]`.
 - Never crash on untrusted input: `Result` + `?`, no unwrap outside tests.
-- NAPS2 reference (`naps2-in c++-master #For Reference/`, GPL) is
-  behavior-only: no code from it enters this repo (see
-  `docs/architecture-notes.md` §7).
+- License: GPL-2.0-or-later. Files ported from NAPS2 carry a header naming
+  their origin; the C# reference snapshot stays behavior-readable in-repo.

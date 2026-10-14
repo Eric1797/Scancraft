@@ -16,6 +16,8 @@ use scancraft_model::{EditOp, Page, Project, ScanProfile};
 use scancraft_scan_core::{CancelToken, DeviceInfo, PageSink, Progress, RawPage, ScanError, ScanRequest, ScannerBackend};
 use scancraft_scan_escl::EsclScanner;
 use scancraft_scan_mock::MockScanner;
+use scancraft_scan_twain::TwainScanner;
+use scancraft_scan_wia::WiaScanner;
 use scancraft_ui_kit::{ThemeKind, ThemePreference, palette};
 
 /// Messages from the scan worker thread to the UI thread.
@@ -201,7 +203,15 @@ impl ScannerApp {
 
     /// Backend matching the selected device id.
     fn backend_for(&self, device_id: &str) -> Box<dyn ScannerBackend> {
-        if device_id.starts_with("escl:") { Box::new(self.escl.clone()) } else { Box::new(self.mock.clone()) }
+        if device_id.starts_with("escl:") {
+            Box::new(self.escl.clone())
+        } else if device_id.starts_with("wia:") {
+            Box::new(WiaScanner::default())
+        } else if device_id.starts_with("twain:") {
+            Box::new(TwainScanner)
+        } else {
+            Box::new(self.mock.clone())
+        }
     }
 
     fn device_display(&self) -> String {
@@ -226,6 +236,9 @@ impl ScannerApp {
             let cancel = CancelToken::new();
             let mut devices = mock.list_devices(&cancel).unwrap_or_default();
             devices.extend(escl.list_devices(&cancel).unwrap_or_default());
+            // WIA is real on Windows, Unsupported elsewhere (empty there).
+            devices.extend(WiaScanner::default().list_devices(&cancel).unwrap_or_default());
+            devices.extend(TwainScanner.list_devices(&cancel).unwrap_or_default());
             let _ = tx.send(devices);
         });
     }

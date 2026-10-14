@@ -47,13 +47,17 @@ Options:
 
 ## D4. NAPS2 reference is behavior-only (decided, binding)
 
-- The reference snapshot is **C#/.NET under GPL-2.0-or-later** (not C++).
-  Target license MIT OR Apache-2.0 ⇒ **no code/structure/comments ported**.
-- Allowed: feature/option names, ranges, defaults (NAPS2 facts);
-  driver concepts; test scenarios.
-- Resolves spec §4 ("don't read source for logic") vs "use as reference":
-  interface/behavior level only. Interface shapes noted in
-  `architecture-notes.md` §5; logic re-derived from vendor specs.
+- SUPERSEDED 2026-10-15 by human decision: the whole project is now
+  **GPL-2.0-or-later** (same as NAPS2), so porting NAPS2 scan logic to Rust
+  is license-compatible. Rules for ported code:
+  - every ported file carries a header naming its NAPS2 origin;
+  - port logic/structure, never bulk-copy comments verbatim without need;
+  - C/C++-dependent NAPS2 parts (pdfium, Tesseract) are NOT ported —
+    PdfCraft-style pure-Rust equivalents are used instead (ultralight rule);
+  - the reference snapshot stays in-repo, still read-only.
+- Original D4 text (pre-GPL, kept for history): the reference snapshot is
+  C#/.NET under GPL-2.0-or-later (not C++); target was MIT OR Apache-2.0,
+  so no code porting was allowed.
 
 ## D5. OCR: reuse PdfCraft's ocrs+rten stack (decided, to verify in M5)
 
