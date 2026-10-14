@@ -33,10 +33,14 @@ jobs:
       - name: Smoke test (CLI)
         run: .\target\release\scancraft-cli.exe devices
 
-      - name: Upload exes
+      - name: Upload Windows EXE
         uses: actions/upload-artifact@v4
+        if: always()
         with:
-          name: scancraft-windows-x64
+          name: windows-exe
           path: |
-            target/release/scancraft.exe
-            target/release/scancraft-cli.exe
+            target/release/*.exe
+            target/debug/*.exe
+            dist/*.exe
+            build/*.exe
+          if-no-files-found: warn

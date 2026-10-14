@@ -1,8 +1,12 @@
-# cargo-deny config (mirrors PdfCraft's allowlist; full audit runs in CI).
-[advisories]
-ignore = []
+# cargo-deny policy (mirrors PdfCraft's). Code dependencies follow the same
+# rule as assets: permissive licences only. Copyleft (GPL, AGPL, LGPL) is
+# never linked; such tools run only as external oracle processes.
+
+[graph]
+all-features = true
 
 [licenses]
+confidence-threshold = 0.9
 allow = [
     "MIT",
     "MIT-0",
@@ -15,9 +19,25 @@ allow = [
     "Unicode-3.0",
     "BSL-1.0",
     "CC0-1.0",
-    "Unlicense",
 ]
+
+[licenses.private]
+ignore = true
 
 [bans]
 multiple-versions = "warn"
 wildcards = "deny"
+
+[sources]
+unknown-registry = "deny"
+unknown-git = "deny"
+
+[advisories]
+yanked = "warn"
+
+# egui's default UI fonts (Ubuntu-Light, Hack, emoji-icon-font): font licences
+# on the asset allowlist, attributed in ATTRIBUTION.toml as
+# dependency-bundled assets.
+[[licenses.exceptions]]
+crate = "epaint_default_fonts"
+allow = ["OFL-1.1", "Ubuntu-font-1.0"]
