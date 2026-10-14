@@ -12,15 +12,29 @@ use scancraft_export::{PdfPage, TiffPage, write_atomic, write_jpeg, write_pdf, w
 use scancraft_imaging::Image;
 use scancraft_model::ScanProfile;
 use scancraft_scan_core::{CancelToken, PageSink, Progress, RawPage, ScanError, ScanRequest, ScannerBackend};
+use scancraft_scan_escl::EsclScanner;
 use scancraft_scan_mock::MockScanner;
 
 fn usage() -> &'static str {
-    "scancraft-cli [--help] [--version] <command>\n\nCommands:\n  devices    list scanners (mock backend)\n  profiles   list built-in profiles\n  scan --pages N --dpi D --out FILE [--format pdf|tiff|jpg|png] [--quality Q] [--force]\n             scan with the mock backend straight to a file\n"
+    "scancraft-cli [--help] [--version] <command>\n\nCommands:\n  devices [--host URL]   list scanners (mock + probed eSCL hosts)\n  profiles               list built-in profiles\n  scan --pages N --dpi D --out FILE [--format pdf|tiff|jpg|png] [--quality Q] [--force]\n       [--device ID]    scan straight to a file (default device: mock demo scanner)\n"
 }
 
-fn list_devices() -> Result<(), String> {
-    let backend = MockScanner::default();
-    let devices = backend.list_devices(&CancelToken::new()).map_err(|e| e.message())?;
+fn list_devices(argv: &[String]) -> Result<(), String> {
+    let opts = options(argv)?;
+    let mock = MockScanner::default();
+    let cancel = CancelToken::new();
+    let mut devices = mock.list_devices(&cancel).map_err(|e| e.message())?;
+    // Optional: probe explicit eSCL hosts, e.g. `devices --host http://192.168.1.50`.
+    let mut hosts = Vec::new();
+    for (k, v) in &opts {
+        if k == "host" {
+            hosts.push(v.clone().ok_or("--host needs a value")?);
+        }
+    }
+    if !hosts.is_empty() {
+        let escl = EsclScanner::with_hosts(hosts);
+        devices.extend(escl.list_devices(&cancel).map_err(|e| e.message())?);
+    }
     if devices.is_empty() {
         println!("no scanners found");
         return Ok(());
@@ -105,18 +119,29 @@ fn scan_to_file(argv: &[String]) -> Result<(), String> {
         return Err("--pages must be 1..=10000".to_owned());
     }
 
-    let profile = ScanProfile { device_id: "mock:demo-scanner".to_owned(), dpi, ..ScanProfile::default() };
+    let profile = ScanProfile { device_id: opt_value(&opts, "device")?.unwrap_or("mock:demo-scanner".to_owned()), dpi, ..ScanProfile::default() };
     let mut ignored = Vec::new();
     let request = ScanRequest::from_profile(&profile, &mut ignored).map_err(|e| e.message())?;
+    let format = opt_value(&opts, "format")?;
 
-    let backend = MockScanner { pages, ..Default::default() };
+    if request.device.0.starts_with("escl:") {
+        let host = request.device.0.trim_start_matches("escl:").to_owned();
+        let backend = EsclScanner::with_hosts(vec![host]);
+        scan_with(&backend, &request, &out, format.as_deref(), quality, force)
+    } else {
+        let backend = MockScanner { pages, ..Default::default() };
+        scan_with(&backend, &request, &out, format.as_deref(), quality, force)
+    }
+}
+
+fn scan_with(backend: &dyn ScannerBackend, request: &ScanRequest, out: &str, format: Option<&str>, quality: u32, force: bool) -> Result<(), String> {
     let mut sink = Collect { pages: Vec::new() };
-    backend.scan(&request, &mut sink, &CancelToken::new()).map_err(|e| e.message())?;
+    backend.scan(request, &mut sink, &CancelToken::new()).map_err(|e| e.message())?;
     if sink.pages.is_empty() {
         return Err("scan produced no pages".to_owned());
     }
 
-    let format = match opt_value(&opts, "format")?.as_deref() {
+    let format = match format {
         Some("pdf") | None if out.ends_with(".pdf") => "pdf",
         Some("tiff") | None if out.ends_with(".tiff") || out.ends_with(".tif") => "tiff",
         Some("jpg") | Some("jpeg") | None if out.ends_with(".jpg") || out.ends_with(".jpeg") => "jpg",
@@ -175,7 +200,7 @@ fn run(argv: &[String]) -> Result<(), String> {
             println!("scancraft-cli {}", env!("CARGO_PKG_VERSION"));
             Ok(())
         }
-        "devices" => list_devices(),
+        "devices" => list_devices(argv),
         "profiles" => list_profiles(),
         "scan" => scan_to_file(argv),
         other => Err(format!("unknown command: {other}\n{}", usage())),

@@ -18,6 +18,7 @@ scancraft-engine = { path = "crates/scancraft-engine", version = "0.1.0" }
 scancraft-ui-kit = { path = "crates/scancraft-ui-kit", version = "0.1.0" }
 scancraft-imaging = { path = "crates/scancraft-imaging", version = "0.1.0" }
 scancraft-export = { path = "crates/scancraft-export", version = "0.1.0" }
+scancraft-scan-escl = { path = "crates/scancraft-scan-escl", version = "0.1.0" }
 
 # UI (same versions as PdfCraft)
 egui = "0.36"
@@ -26,6 +27,7 @@ eframe = { version = "0.36", default-features = false }
 # Imaging codecs: pure-Rust only (no libtiff/libjpeg-turbo C deps).
 image = { version = "0.25", default-features = false, features = ["png", "jpeg", "tiff", "bmp", "gif"] }
 flate2 = { version = "1.1", default-features = false, features = ["rust_backend"] }
+quick-xml = { version = "0.41", default-features = false }
 
 # Native file dialogs.
 rfd = "0.17"

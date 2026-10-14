@@ -2439,6 +2439,7 @@ dependencies = [
  "scancraft-imaging",
  "scancraft-model",
  "scancraft-scan-core",
+ "scancraft-scan-escl",
  "scancraft-scan-mock",
  "scancraft-ui-kit",
 ]
@@ -2452,6 +2453,7 @@ dependencies = [
  "scancraft-imaging",
  "scancraft-model",
  "scancraft-scan-core",
+ "scancraft-scan-escl",
  "scancraft-scan-mock",
 ]
 
@@ -2490,6 +2492,16 @@ name = "scancraft-scan-core"
 version = "0.1.0"
 dependencies = [
  "scancraft-model",
+]
+
+[[package]]
+name = "scancraft-scan-escl"
+version = "0.1.0"
+dependencies = [
+ "quick-xml",
+ "scancraft-imaging",
+ "scancraft-model",
+ "scancraft-scan-core",
 ]
 
 [[package]]

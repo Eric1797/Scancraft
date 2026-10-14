@@ -28,14 +28,12 @@ Options:
   copy with tokens in one file.
 - Default if human defers: (a) for M1–M2, revisit before M8 packaging.
 
-## D2. Release profile: size vs speed — PENDING HUMAN (§14 Q4)
+## D2. Release profile: size vs speed — RESOLVED (human 2026-10-14, updated)
 
-- PdfCraft ships `lto = "thin"`, `codegen-units = 1` (no `panic = "abort"`,
-  no `strip`). Spec §2 proposes `fat`/`abort`/`strip`/`opt-level 3-or-s`.
-- `panic = "abort"` conflicts with never-crash + recovery-file story
-  (recovery writer must survive worker panics). Lean: keep `unwind`,
-  measure `opt-level 3` vs `"s"` for the ≤12 MB aim / 25 MB hard fail.
-- Decision after first size measurement (`xtask size` lands in M1).
+- Max speed (`opt-level = 3`); keep `unwind` (never-crash + recovery).
+- Size budget: **no limit until 60 MB** (human decision); hard fail above
+  60 MB, report the number every release. The old 12 MB aim / 25 MB fail
+  are dropped. Current: `scancraft.exe` 16.3 MB, `scancraft-cli.exe` 370 KB.
 
 ## D3. Workspace layout: `scanner/` scaffold vs spec §3.1 — PENDING HUMAN
 
@@ -93,7 +91,6 @@ Options:
 - No async runtime, no rayon (std threads + channels only, per D7).
 
 ## D10. Export limits shipped knowingly in M2 (all in feature-matrix)
-
 - PDF images are Flate RGB (no JPEG pass-through yet, no G4 1-bit yet).
 - TIFF is uncompressed RGB with DPI tags (LZW/G4 later).
 - JPEG/PNG singles carry no DPI metadata yet (image-crate encoders lack
@@ -101,3 +98,24 @@ Options:
 - No encryption (M2b), no OCR layer (M5), no PDF/A (later).
 - Save runs on a worker thread; edit-stack rendering still on the UI
   thread for small pages (moves off-thread with the session cache, M2b).
+
+## D11. eSCL backend: hand-rolled HTTP, spec vocabulary (decided M6-start)
+
+- Protocol facts come from the public Mopria spec text + MIT/Apache client
+  implementations (endpoint shapes, `ScanSettings`/`ScannerCapabilities`
+  element names, three-hundredths-of-an-inch regions). No NAPS2 code read
+  for logic; the reference folder stays behavior-only per D4.
+- HTTP is hand-rolled blocking HTTP/1.1 over `TcpStream` (GET/POST/DELETE,
+  Content-Length + chunked, caps, timeouts): zero new HTTP deps, no TLS
+  stack, no async runtime. Plain HTTP only — printers serve eSCL over the
+  LAN unencrypted; TLS needs the per-device trust UI first (M6b).
+- `quick-xml 0.41` (same version PdfCraft vets) for capabilities; parsing
+  is namespace-tolerant (local names) for vendor dialects.
+- JPEG requested when advertised; PDF bytes from a device surface as an
+  actionable `Unsupported` error (PDF raster import is M2b).
+- `<scan:Duplex>` element for duplex requests is best-effort (wire name
+  uncertain; devices refusing it map to `Unsupported`). Marked
+  `UNVERIFIED-ON-HARDWARE` until a real AirScan device runs it.
+- Proven by an in-process mock eSCL server (capabilities → job → pages →
+  404 → DELETE) in crate tests. mDNS `_uscan._tcp` discovery is M6b;
+  hosts are explicit for now.

@@ -13,7 +13,8 @@ use scancraft_engine::{DocId, Session};
 use scancraft_export::{PdfMeta, PdfPage, Stamp, TiffPage, render_filename, unique_path, write_atomic, write_jpeg, write_pdf, write_png, write_tiff};
 use scancraft_imaging::Image as ScanImage;
 use scancraft_model::{EditOp, Page, Project, ScanProfile};
-use scancraft_scan_core::{CancelToken, PageSink, Progress, RawPage, ScanError, ScanRequest, ScannerBackend};
+use scancraft_scan_core::{CancelToken, DeviceInfo, PageSink, Progress, RawPage, ScanError, ScanRequest, ScannerBackend};
+use scancraft_scan_escl::EsclScanner;
 use scancraft_scan_mock::MockScanner;
 use scancraft_ui_kit::{ThemeKind, ThemePreference, palette};
 
@@ -122,7 +123,11 @@ struct ScannerApp {
     docs: Vec<DocId>,
     active: usize,
     profile: ScanProfile,
-    backend: MockScanner,
+    mock: MockScanner,
+    escl: EsclScanner,
+    devices: Vec<DeviceInfo>,
+    devices_rx: Option<Receiver<Vec<DeviceInfo>>>,
+    escl_host_input: String,
     theme_pref: ThemePreference,
     theme_applied: ThemeKind,
     view: View,
@@ -139,6 +144,7 @@ struct ScannerApp {
     palette_open: bool,
     palette_query: String,
     dragging: Option<u64>,
+    devices_loaded: bool,
     save: SaveDialog,
     save_rx: Option<Receiver<SaveMsg>>,
     status: String,
@@ -154,7 +160,11 @@ impl ScannerApp {
             docs: vec![doc],
             active: 0,
             profile,
-            backend: MockScanner { pages: 4, ..Default::default() },
+            mock: MockScanner { pages: 4, ..Default::default() },
+            escl: EsclScanner::default(),
+            devices: Vec::new(),
+            devices_rx: None,
+            escl_host_input: "http://192.168.1.100".to_owned(),
             theme_pref: ThemePreference::System,
             theme_applied: ThemeKind::Light,
             view: View::Grid,
@@ -170,6 +180,7 @@ impl ScannerApp {
             palette_open: false,
             palette_query: String::new(),
             dragging: None,
+            devices_loaded: false,
             save: SaveDialog::default(),
             save_rx: None,
             status: "Ready.".to_owned(),
@@ -186,6 +197,60 @@ impl ScannerApp {
 
     fn scanning(&self) -> bool {
         self.scan_rx.is_some()
+    }
+
+    /// Backend matching the selected device id.
+    fn backend_for(&self, device_id: &str) -> Box<dyn ScannerBackend> {
+        if device_id.starts_with("escl:") { Box::new(self.escl.clone()) } else { Box::new(self.mock.clone()) }
+    }
+
+    fn device_display(&self) -> String {
+        self.devices
+            .iter()
+            .find(|d| d.id.0 == self.profile.device_id)
+            .map(|d| d.display_name.clone())
+            .unwrap_or_else(|| "Demo scanner (mock)".to_owned())
+    }
+
+    /// Refresh the device list off the UI thread (network probes can stall).
+    fn refresh_devices(&mut self, ctx: &egui::Context) {
+        if self.devices_rx.is_some() {
+            return;
+        }
+        let (tx, rx) = mpsc::channel();
+        self.devices_rx = Some(rx);
+        let mock = self.mock.clone();
+        let escl = self.escl.clone();
+        ctx.request_repaint();
+        std::thread::spawn(move || {
+            let cancel = CancelToken::new();
+            let mut devices = mock.list_devices(&cancel).unwrap_or_default();
+            devices.extend(escl.list_devices(&cancel).unwrap_or_default());
+            let _ = tx.send(devices);
+        });
+    }
+
+    fn poll_devices(&mut self) {
+        let ready = match &self.devices_rx {
+            Some(rx) => match rx.try_recv() {
+                Err(TryRecvError::Empty) => false,
+                Err(TryRecvError::Disconnected) => true,
+                Ok(devices) => {
+                    // Keep the selected device valid across refreshes.
+                    if !devices.iter().any(|d| d.id.0 == self.profile.device_id)
+                        && let Some(first) = devices.first()
+                    {
+                        self.profile.device_id = first.id.0.clone();
+                    }
+                    self.devices = devices;
+                    true
+                }
+            },
+            None => false,
+        };
+        if ready {
+            self.devices_rx = None;
+        }
     }
 
     // ---------- documents / tabs ----------
@@ -239,7 +304,7 @@ impl ScannerApp {
         let (tx, rx) = mpsc::channel();
         self.scan_rx = Some(rx);
         self.scan_cancel = Some(cancel.clone());
-        let backend = self.backend.clone();
+        let backend = self.backend_for(&self.profile.device_id.clone());
         ctx.request_repaint();
         std::thread::spawn(move || {
             // COM/WIA rule preview: ALL driver calls stay on this one worker
@@ -832,6 +897,14 @@ impl eframe::App for ScannerApp {
         if self.scanning() {
             ctx.request_repaint();
         }
+        if !self.devices_loaded {
+            self.devices_loaded = true;
+            self.refresh_devices(&ctx);
+        }
+        self.poll_devices();
+        if self.devices_rx.is_some() {
+            ctx.request_repaint();
+        }
         self.poll_save();
         if self.save_rx.is_some() {
             ctx.request_repaint();
@@ -935,7 +1008,7 @@ impl eframe::App for ScannerApp {
         // ---- Status bar ----
         egui::Panel::bottom("statusbar").show(ui, |ui| {
             ui.horizontal(|ui| {
-                ui.label(format!("Demo scanner (mock) · {} · {} dpi", self.profile.name, self.profile.dpi));
+                ui.label(format!("{} · {} dpi", self.device_display(), self.profile.dpi));
                 ui.separator();
                 ui.label(format!("{} page(s)", page_count));
                 ui.label(format!("{} selected", self.selection.len()));
@@ -949,18 +1022,45 @@ impl eframe::App for ScannerApp {
         let mut tool_cmd: Option<&'static str> = None;
         egui::Panel::left("tools").show(ui, |ui| {
             ui.heading("Tools");
-            if let Some(cmd) = tool_group(
-                ui,
-                "Scan",
-                &[
-                    ("Scan", true, "", Some("scan")),
-                    ("Scan again", true, "", Some("scan")),
-                    ("Batch scan", false, "M4", None),
-                    ("Profiles…", false, "M4", None),
-                ],
-            ) {
-                tool_cmd = Some(cmd);
-            }
+            ui.collapsing("Scan", |ui| {
+                // Device picker (mock + any probed network scanners).
+                let current = self.profile.device_id.clone();
+                egui::ComboBox::from_label("Device").selected_text(self.device_display()).show_ui(ui, |ui| {
+                    for d in self.devices.clone() {
+                        if ui.selectable_label(current == d.id.0, &d.display_name).clicked() {
+                            self.profile.device_id = d.id.0;
+                        }
+                    }
+                });
+                ui.horizontal(|ui| {
+                    if ui.button("Refresh devices").clicked() {
+                        self.refresh_devices(&ctx);
+                    }
+                    if self.devices_rx.is_some() {
+                        ui.spinner();
+                    }
+                });
+                ui.horizontal(|ui| {
+                    ui.label("Network host");
+                    ui.text_edit_singleline(&mut self.escl_host_input);
+                });
+                if ui.button("Add network scanner").clicked() {
+                    let host = self.escl_host_input.trim().to_owned();
+                    if !host.is_empty() {
+                        self.escl = EsclScanner::with_hosts(vec![host]);
+                        self.refresh_devices(&ctx);
+                        self.status = "Probing network scanner…".to_owned();
+                    }
+                }
+                ui.separator();
+                if ui.button("⬇ Scan").clicked() {
+                    tool_cmd = Some("scan");
+                }
+                ui.add_enabled_ui(false, |ui| {
+                    let _ = ui.button("Batch scan  [M4]");
+                    let _ = ui.button("Profiles…  [M4]");
+                });
+            });
             if let Some(cmd) = tool_group(
                 ui,
                 "Pages",

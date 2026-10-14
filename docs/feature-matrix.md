@@ -8,7 +8,8 @@
 
 | Feature | NAPS2 behavior (UNVERIFIED vs naps2.com) | Status | MS | Test |
 |---|---|---|---|---|
-| Device discovery (WIA/TWAIN/eSCL) | Drivers enumerated per platform; TWAIN 32-bit via worker | partial (mock only) | M3/M6/M7 | mock + hardware list |
+| Device discovery (WIA/TWAIN/eSCL) | Drivers enumerated per platform; TWAIN 32-bit via worker | partial (mock + manual eSCL host; no WIA/TWAIN/mDNS yet) | M3/M6/M7 | mock + mock-eSCL server |
+| eSCL scan (capabilities → job → pages → cancel) | eSCL driver + options | partial (client + mock-server proven, UNVERIFIED-ON-HARDWARE) | M6 | mock-server tests |
 | Profiles (named/default/quick-scan) | `ScanProfile` + manager + edit/advanced dialogs | partial (model only, no UI) | M4 | settings migration |
 | Sources flatbed/feeder/duplex, DPI 50–1200, presets | `ScanOptions` fields (see arch notes §5) | partial (mock honors request) | M3 | mock matrix |
 | Bit depth color/gray/BW, scale 1:1–1:8 | Per NAPS2 option bags | partial | M3 | mock |
