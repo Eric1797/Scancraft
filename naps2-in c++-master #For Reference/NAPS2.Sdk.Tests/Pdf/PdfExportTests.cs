@@ -1,0 +1,513 @@
+using System.Threading;
+using NAPS2.Pdf;
+using NAPS2.Sdk.Tests.Asserts;
+using NSubstitute;
+using Xunit;
+
+namespace NAPS2.Sdk.Tests.Pdf;
+
+public class PdfExporterTests : ContextualTests
+{
+    private readonly PdfExporter _exporter;
+
+    public PdfExporterTests()
+    {
+        _exporter = new PdfExporter(ScanningContext);
+    }
+
+    [Theory]
+    [ClassData(typeof(StorageAwareTestData))]
+    public async Task ExportJpegImage(StorageConfig storageConfig)
+    {
+        storageConfig.Apply(this);
+
+        var filePath = Path.Combine(FolderPath, "test.pdf");
+        using var image = ScanningContext.CreateProcessedImage(LoadImage(ImageResources.dog));
+
+        await _exporter.Export(filePath, [image]);
+
+        PdfAsserts.AssertImages(filePath, ImageResources.dog);
+        PdfAsserts.AssertImageFilter(filePath, 0, "DCTDecode");
+    }
+
+    [Theory]
+    [ClassData(typeof(StorageAwareTestData))]
+    public async Task ExportJpegImageToStream(StorageConfig storageConfig)
+    {
+        storageConfig.Apply(this);
+
+        var filePath = Path.Combine(FolderPath, "test.pdf");
+        var fileStream = File.OpenWrite(filePath);
+        using var image = ScanningContext.CreateProcessedImage(LoadImage(ImageResources.dog));
+
+        await _exporter.Export(fileStream, [image]);
+        fileStream.Close();
+
+        PdfAsserts.AssertImages(filePath, ImageResources.dog);
+        PdfAsserts.AssertImageFilter(filePath, 0, "DCTDecode");
+    }
+
+    [Theory]
+    [ClassData(typeof(StorageAwareTestData))]
+    public async Task ExportJpegImageToNonexistentFolder(StorageConfig storageConfig)
+    {
+        storageConfig.Apply(this);
+
+        var filePath = Path.Combine(FolderPath, "blah", "test.pdf");
+        using var image = ScanningContext.CreateProcessedImage(LoadImage(ImageResources.dog));
+
+        await _exporter.Export(filePath, [image]);
+
+        PdfAsserts.AssertImages(filePath, ImageResources.dog);
+        PdfAsserts.AssertImageFilter(filePath, 0, "DCTDecode");
+    }
+
+    [Theory]
+    [ClassData(typeof(StorageAwareTestData))]
+    public async Task ExportGrayJpegImage(StorageConfig storageConfig)
+    {
+        storageConfig.Apply(this);
+
+        var filePath = Path.Combine(FolderPath, "test.pdf");
+        using var image = ScanningContext.CreateProcessedImage(LoadImage(ImageResources.dog_gray_8bit)
+            .PerformTransform(new GrayscaleTransform()));
+
+        await _exporter.Export(filePath, [image]);
+
+        PdfAsserts.AssertImages(filePath, ImageResources.dog_gray);
+        PdfAsserts.AssertImageFilter(filePath, 0, "DCTDecode");
+    }
+
+    [Fact]
+    public async Task ExportJpegWithoutEncoding()
+    {
+        SetUpFileStorage();
+
+        var filePath = Path.Combine(FolderPath, "test.pdf");
+        using var image = ScanningContext.CreateProcessedImage(LoadImage(ImageResources.dog));
+
+        await _exporter.Export(filePath, [image]);
+
+        var renderer = new PdfiumPdfRenderer();
+        var pdfImage = renderer.RenderPage(ImageContext, filePath, PdfRenderSize.Default);
+        ImageAsserts.Similar(image.Render(), pdfImage, 0);
+    }
+
+    [Fact]
+    public async Task ExportEditedJpegWithStoredQuality()
+    {
+        SetUpFileStorage();
+
+        var filePath = Path.Combine(FolderPath, "test.pdf");
+        // The image is edited, so it needs to be re-encoded, which should use the quality it was stored with
+        using var image = ScanningContext.CreateProcessedImage(LoadImage(ImageResources.dog), false, 50)
+            .WithTransform(new RotationTransform(90), true);
+
+        await _exporter.Export(filePath, [image]);
+
+        using var rendered = image.Render();
+        var expected = rendered.SaveToMemoryStream(ImageFileFormat.Jpeg,
+            new ImageSaveOptions { PixelFormatHint = ImagePixelFormat.RGB24, Quality = 50 }).ToArray();
+        var defaultQuality = rendered.SaveToMemoryStream(ImageFileFormat.Jpeg,
+            new ImageSaveOptions { PixelFormatHint = ImagePixelFormat.RGB24 }).ToArray();
+        Assert.NotEqual(defaultQuality, expected);
+        Assert.True(File.ReadAllBytes(filePath).AsSpan().IndexOf(expected) >= 0,
+            "Expected the PDF to contain the image re-encoded at quality 50");
+    }
+
+    [Fact]
+    public async Task ExportJpegWithChangedQuality()
+    {
+        SetUpFileStorage();
+
+        var filePath = Path.Combine(FolderPath, "test.pdf");
+        // Without the FileFormatTransform, the JPEG file would be copied directly and the new quality ignored
+        using var jpegImage = ScanningContext.CreateProcessedImage(LoadImage(ImageResources.dog));
+        using var image = jpegImage.WithMetadata(jpegImage.Metadata with { Quality = 50 })
+            .WithTransform(new FileFormatTransform(ImageFileFormat.Jpeg), true);
+
+        await _exporter.Export(filePath, [image]);
+
+        using var rendered = image.Render();
+        var expected = rendered.SaveToMemoryStream(ImageFileFormat.Jpeg,
+            new ImageSaveOptions { PixelFormatHint = ImagePixelFormat.RGB24, Quality = 50 }).ToArray();
+        Assert.True(File.ReadAllBytes(filePath).AsSpan().IndexOf(expected) >= 0,
+            "Expected the PDF to contain the image re-encoded at quality 50");
+    }
+
+    [Theory]
+    [ClassData(typeof(StorageAwareTestData))]
+    public async Task ExportPngImage(StorageConfig storageConfig)
+    {
+        storageConfig.Apply(this);
+
+        var filePath = Path.Combine(FolderPath, "test.pdf");
+        using var image = ScanningContext.CreateProcessedImage(LoadImage(ImageResources.dog_png), lossless: true);
+
+        await _exporter.Export(filePath, [image]);
+
+        PdfAsserts.AssertImages(filePath, ImageResources.dog);
+        PdfAsserts.AssertImageFilter(filePath, 0, "FlateDecode");
+    }
+
+    [Theory]
+    [ClassData(typeof(StorageAwareTestData))]
+    public async Task ExportUnalignedPngImage(StorageConfig storageConfig)
+    {
+        storageConfig.Apply(this);
+
+        var filePath = Path.Combine(FolderPath, "test.pdf");
+        // Width is 99 (not divisible by 4)
+        var image = ScanningContext.CreateProcessedImage(LoadImage(ImageResources.dog_99w), lossless: true);
+
+        await _exporter.Export(filePath, [image]);
+
+        PdfAsserts.AssertImages(filePath, ImageResources.dog_99w);
+        PdfAsserts.AssertImageFilter(filePath, 0, "FlateDecode");
+    }
+
+    [Theory]
+    [ClassData(typeof(StorageAwareTestData))]
+    public async Task ExportAlphaImage(StorageConfig storageConfig)
+    {
+        storageConfig.Apply(this);
+
+        var filePath = Path.Combine(FolderPath, "test.pdf");
+        using var image = ScanningContext.CreateProcessedImage(LoadImage(ImageResources.dog_alpha));
+
+        await _exporter.Export(filePath, [image]);
+
+        // TODO: This assert is broken as pdfium rendering doesn't work for images with masks yet
+        // PdfAsserts.AssertImages(filePath, ImageResources.dog_alpha);
+        PdfAsserts.AssertImageFilter(filePath, 0, "FlateDecode");
+    }
+
+    [Theory]
+    [ClassData(typeof(StorageAwareTestData))]
+    public async Task ExportMaskedImage(StorageConfig storageConfig)
+    {
+        storageConfig.Apply(this);
+
+        var filePath = Path.Combine(FolderPath, "test.pdf");
+        using var image = ScanningContext.CreateProcessedImage(LoadImage(ImageResources.dog_mask));
+
+        await _exporter.Export(filePath, [image]);
+
+        // TODO: This assert is broken as pdfium rendering doesn't work for images with masks yet
+        // PdfAsserts.AssertImages(filePath, ImageResources.dog_alpha);
+        PdfAsserts.AssertImageFilter(filePath, 0, "FlateDecode");
+    }
+
+    [Theory]
+    [ClassData(typeof(StorageAwareTestData))]
+    public async Task ExportBlackAndWhiteImage(StorageConfig storageConfig)
+    {
+        storageConfig.Apply(this);
+
+        var filePath = Path.Combine(FolderPath, "test.pdf");
+        var storageImage = LoadImage(ImageResources.dog_bw);
+        using var image = ScanningContext.CreateProcessedImage(storageImage);
+
+        await _exporter.Export(filePath, [image]);
+
+        PdfAsserts.AssertImages(filePath, ImageResources.dog_bw);
+        PdfAsserts.AssertImageFilter(filePath, 0, "JBIG2Decode");
+    }
+
+    [Theory]
+    [ClassData(typeof(StorageAwareTestData))]
+    public async Task ExportBlackAndWhiteImageWithoutJbig2(StorageConfig storageConfig)
+    {
+        storageConfig.Apply(this);
+
+        var filePath = Path.Combine(FolderPath, "test.pdf");
+        var storageImage = LoadImage(ImageResources.dog_bw);
+        using var image = ScanningContext.CreateProcessedImage(storageImage);
+
+        await _exporter.Export(filePath, [image], new PdfExportParams
+        {
+            Compression = new PdfCompression { AllowJbig2 = false }
+        });
+
+        PdfAsserts.AssertImages(filePath, ImageResources.dog_bw);
+        PdfAsserts.AssertImageFilter(filePath, 0, "CCITTFaxDecode");
+    }
+
+    [Theory]
+    [ClassData(typeof(StorageAwareTestData))]
+    public async Task ExportBlackAndWhiteAlternatingPixels(StorageConfig storageConfig)
+    {
+        storageConfig.Apply(this);
+
+        var filePath = Path.Combine(FolderPath, "test.pdf");
+        var storageImage = LoadImage(ImageResources.bw_alternating);
+        using var image = ScanningContext.CreateProcessedImage(storageImage);
+
+        await _exporter.Export(filePath, [image], new PdfExportParams
+        {
+            Compression = new PdfCompression { AllowJbig2 = false }
+        });
+
+        PdfAsserts.AssertImages(filePath, ImageResources.bw_alternating);
+        // Alternating black & white pixels is the worst case for CCITT encoding (i.e. the encoded size is bigger than
+        // unencoded), therefore PDFSharp should choose FlateDecode (PNG encoding) instead
+        PdfAsserts.AssertImageFilter(filePath, 0, "FlateDecode");
+    }
+
+    [Theory]
+    [ClassData(typeof(StorageAwareTestData))]
+    public async Task ExportGrayImage(StorageConfig storageConfig)
+    {
+        storageConfig.Apply(this);
+
+        var filePath = Path.Combine(FolderPath, "test.pdf");
+        var storageImage = LoadImage(ImageResources.dog_clustered_gray);
+        using var image = ScanningContext.CreateProcessedImage(storageImage);
+
+        await _exporter.Export(filePath, [image]);
+
+        PdfAsserts.AssertImages(filePath, ImageResources.dog_clustered_gray);
+        PdfAsserts.AssertImageFilter(filePath, 0, "FlateDecode");
+    }
+
+    [Theory]
+    [ClassData(typeof(StorageAwareTestData))]
+    public async Task ExportBlackAndWhiteImageByMetadata(StorageConfig storageConfig)
+    {
+        storageConfig.Apply(this);
+
+        var filePath = Path.Combine(FolderPath, "test.pdf");
+        using var image = ScanningContext.CreateProcessedImage(LoadImage(ImageResources.dog_bw_24bit),
+            true, -1, null);
+
+        await _exporter.Export(filePath, [image]);
+
+        PdfAsserts.AssertImages(filePath, ImageResources.dog_bw);
+        PdfAsserts.AssertImageFilter(filePath, 0, "JBIG2Decode");
+    }
+
+    [Theory]
+    [ClassData(typeof(StorageAwareTestData))]
+    public async Task ExportMetadata(StorageConfig storageConfig)
+    {
+        storageConfig.Apply(this);
+
+        var filePath = Path.Combine(FolderPath, "test.pdf");
+        using var image = ScanningContext.CreateProcessedImage(LoadImage(ImageResources.dog));
+        var metadata = new PdfMetadata
+        {
+            Author = "author",
+            Title = "title",
+            Keywords = "keywords",
+            Subject = "subject"
+        };
+
+        await _exporter.Export(filePath, [image], new PdfExportParams { Metadata = metadata });
+
+        PdfAsserts.AssertMetadata(metadata with { Creator = "NAPS2" }, filePath, "world");
+        // TODO: We should also test embedded dates etc. somewhere, no tests for that yet 
+    }
+
+    [Theory]
+    [ClassData(typeof(StorageAwareTestData))]
+    public async Task ExportUnicodeMetadata(StorageConfig storageConfig)
+    {
+        storageConfig.Apply(this);
+
+        var filePath = Path.Combine(FolderPath, "test.pdf");
+        using var image = ScanningContext.CreateProcessedImage(LoadImage(ImageResources.dog));
+        var metadata = new PdfMetadata
+        {
+            Author = "מְחַבֵּר",
+            Title = "כותרת",
+            Keywords = "מילות מפתח",
+            Subject = "נושא"
+        };
+
+        await _exporter.Export(filePath, [image], new PdfExportParams { Metadata = metadata });
+
+        PdfAsserts.AssertMetadata(metadata with { Creator = "NAPS2" }, filePath, "world");
+        // TODO: We should also test embedded dates etc. somewhere, no tests for that yet 
+    }
+
+    [Theory]
+    [ClassData(typeof(StorageAwareTestData))]
+    public async Task ExportUnicodePath(StorageConfig storageConfig)
+    {
+        storageConfig.Apply(this);
+
+        var filePath = Path.Combine(FolderPath, "מְחַבֵּר.pdf");
+        using var image = ScanningContext.CreateProcessedImage(LoadImage(ImageResources.dog));
+
+        await _exporter.Export(filePath, [image]);
+
+        PdfAsserts.AssertImages(filePath, ImageResources.dog);
+    }
+
+    [Theory]
+    [ClassData(typeof(StorageAwareTestData))]
+    public async Task ExportEncrypted(StorageConfig storageConfig)
+    {
+        storageConfig.Apply(this);
+
+        var filePath = Path.Combine(FolderPath, "test.pdf");
+        using var image = ScanningContext.CreateProcessedImage(LoadImage(ImageResources.dog));
+
+        await _exporter.Export(filePath, [image], new PdfExportParams
+        {
+            Encryption = new()
+            {
+                EncryptPdf = true,
+                OwnerPassword = "hello",
+                UserPassword = "world"
+            }
+        });
+
+        PdfAsserts.AssertEncrypted(filePath, "hello", "world");
+    }
+
+    [Theory]
+    [ClassData(typeof(StorageAwareTestData))]
+    public async Task ExportMetadataEncrypted(StorageConfig storageConfig)
+    {
+        storageConfig.Apply(this);
+
+        var filePath = Path.Combine(FolderPath, "test.pdf");
+        using var image = ScanningContext.CreateProcessedImage(LoadImage(ImageResources.dog));
+        var metadata = new PdfMetadata
+        {
+            Author = "author",
+            Title = "title",
+            Keywords = "keywords",
+            Subject = "subject"
+        };
+
+        await _exporter.Export(filePath, [image], new PdfExportParams
+        {
+            Encryption = new()
+            {
+                EncryptPdf = true,
+                OwnerPassword = "hello",
+                UserPassword = "world"
+            },
+            Metadata = metadata
+        });
+
+        PdfAsserts.AssertEncrypted(filePath, "hello", "world");
+        PdfAsserts.AssertMetadata(metadata with { Creator = "NAPS2" }, filePath, "world");
+    }
+
+    [Theory]
+    [ClassData(typeof(StorageAwareTestData))]
+    public async Task ExportUnicodeMetadataEncrypted(StorageConfig storageConfig)
+    {
+        storageConfig.Apply(this);
+
+        var filePath = Path.Combine(FolderPath, "test.pdf");
+        using var image = ScanningContext.CreateProcessedImage(LoadImage(ImageResources.dog));
+        var metadata = new PdfMetadata
+        {
+            Author = "מְחַבֵּר",
+            Title = "כותרת",
+            Keywords = "מילות מפתח",
+            Subject = "נושא"
+        };
+
+        await _exporter.Export(filePath, [image], new PdfExportParams
+        {
+            Encryption = new()
+            {
+                EncryptPdf = true,
+                OwnerPassword = "hello",
+                UserPassword = "world"
+            },
+            Metadata = metadata
+        });
+
+        PdfAsserts.AssertEncrypted(filePath, "hello", "world");
+        PdfAsserts.AssertMetadata(metadata with { Creator = "NAPS2" }, filePath, "world");
+    }
+
+    [Theory]
+    [ClassData(typeof(OcrTestData))]
+    public async Task ExportProgress(OcrTestConfig config)
+    {
+        config.StorageConfig.Apply(this);
+        SetUpFakeOcr();
+
+        var progressMock = Substitute.For<ProgressCallback>();
+
+        var filePath = Path.Combine(FolderPath, "test.pdf");
+        var images = new[] { CreateScannedImage(), CreateScannedImage(), CreateScannedImage() };
+        var result = await _exporter.Export(filePath, images, ocrParams: config.OcrParams,
+            progress: progressMock);
+
+        Assert.True(result);
+        progressMock.Received()(0, 3);
+        progressMock.Received()(1, 3);
+        progressMock.Received()(2, 3);
+        progressMock.Received()(3, 3);
+        progressMock.ReceivedCallsCount(4);
+    }
+
+    [Theory]
+    [ClassData(typeof(OcrTestData))]
+    public async Task ExportCancellation(OcrTestConfig config)
+    {
+        config.StorageConfig.Apply(this);
+        SetUpFakeOcr();
+
+        var progressMock = Substitute.For<ProgressCallback>();
+        var cts = new CancellationTokenSource();
+
+        void Progress(int current, int total)
+        {
+            progressMock(current, total);
+            if (current == 1) cts.Cancel();
+        }
+
+        var filePath = Path.Combine(FolderPath, "test.pdf");
+        var images = new[] { CreateScannedImage(), CreateScannedImage(), CreateScannedImage() };
+        var result = await _exporter.Export(filePath, images, ocrParams: config.OcrParams,
+            progress: new ProgressHandler(Progress, cts.Token));
+
+        Assert.False(result);
+        progressMock.Received()(0, 3);
+        progressMock.Received()(1, 3);
+        progressMock.ReceivedCallsCount(2);
+    }
+
+    [Theory]
+    [ClassData(typeof(StorageAwareTestData))]
+    public async Task ExportWithPageSize(StorageConfig storageConfig)
+    {
+        storageConfig.Apply(this);
+
+        var filePath = Path.Combine(FolderPath, "test.pdf");
+        var sourceImage = ImageContext.Create(850, 1100, ImagePixelFormat.RGB24);
+        sourceImage.SetResolution(99.4f, 99.4f);
+        using var image = ScanningContext.CreateProcessedImage(sourceImage, false, -1, PageSize.Letter);
+
+        await _exporter.Export(filePath, [image]);
+
+        // If the resolution is close to the actual page size, we should correct to that page size with high precision
+        PdfAsserts.AssertPageSize(PageSize.Letter, 3, filePath);
+    }
+
+    [Theory]
+    [ClassData(typeof(StorageAwareTestData))]
+    public async Task ExportWithMismatchedPageSize(StorageConfig storageConfig)
+    {
+        storageConfig.Apply(this);
+
+        var filePath = Path.Combine(FolderPath, "test.pdf");
+        var sourceImage = ImageContext.Create(850, 1100, ImagePixelFormat.RGB24);
+        sourceImage.SetResolution(98, 98);
+        using var image = ScanningContext.CreateProcessedImage(sourceImage, false, -1, PageSize.Letter);
+
+        await _exporter.Export(filePath, [image]);
+
+        // If the page size is too far off, we should ignore it and go by the actual resolution (precision is less important here)
+        PdfAsserts.AssertPageSize(new PageSize(8.7m, 11.2m, PageSizeUnit.Inch), 1, filePath);
+    }
+}

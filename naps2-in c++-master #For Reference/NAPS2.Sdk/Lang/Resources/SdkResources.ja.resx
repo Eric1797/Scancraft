@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="DeviceNotFound" xml:space="preserve">
+    <value>選択したスキャナが見つかりません。</value>
+  </data>
+  <data name="DeviceOffline" xml:space="preserve">
+    <value>選択したスキャナーと接続できません。</value>
+  </data>
+  <data name="DeviceCommunicationFailure" xml:space="preserve">
+    <value>スキャナーとの通信が中断されました。</value>
+  </data>
+  <data name="NAPS2" xml:space="preserve">
+    <value>NAPS2</value>
+  </data>
+  <data name="NoDeviceSelected" xml:space="preserve">
+    <value>デバイスが選択されていません。</value>
+  </data>
+  <data name="NoDevicesFound" xml:space="preserve">
+    <value>スキャンデバイスが検出されませんでした。</value>
+  </data>
+  <data name="UnknownDriverError" xml:space="preserve">
+    <value>スキャナドライバにエラーが発生しました。</value>
+  </data>
+  <data name="Version" xml:space="preserve">
+    <value>{0} バージョン</value>
+  </data>
+  <data name="ImportErrorCouldNot" xml:space="preserve">
+    <value>「{0}」ファイルをインポートできませんでした。</value>
+  </data>
+  <data name="NoFeederSupport" xml:space="preserve">
+    <value>選択したスキャナはフィーダーを利用できません。スキャナーにフィーダーが備わっている場合は、別のドライバを試してみてください。</value>
+  </data>
+  <data name="NoPagesInFeeder" xml:space="preserve">
+    <value>フィーダーが空です。</value>
+  </data>
+  <data name="PdfNoPermissionToExtractContent" xml:space="preserve">
+    <value>'{0}'からのコピーは許可されていません.</value>
+  </data>
+  <data name="NoDuplexSupport" xml:space="preserve">
+    <value>このスキャナでは両面スキャンできません。スキャナーに両面機能が備わっている場合は、別のドライバーを試してみてください。</value>
+  </data>
+  <data name="DeviceBusy" xml:space="preserve">
+    <value>選択したスキャナーは使用中です。</value>
+  </data>
+  <data name="DeviceCoverOpen" xml:space="preserve">
+    <value>スキャナーのカバーが開いています。</value>
+  </data>
+  <data name="DevicePaperJam" xml:space="preserve">
+    <value>スキャナーが紙詰まりです。</value>
+  </data>
+  <data name="DeviceWarmingUp" xml:space="preserve">
+    <value>スキャナーが準備をしています。</value>
+  </data>
+  <data name="SaneNotAvailable" xml:space="preserve">
+    <value>SANEドライバは利用不可能です。必要なパッケージをインストールしてください：</value>
+  </data>
+  <data name="TesseractNotAvailable" xml:space="preserve">
+    <value>OCRエンジンを利用できません。言語パッケージをインストールしてください：</value>
+  </data>
+  <data name="DriverNotSupported" xml:space="preserve">
+    <value>選択したドライバはこのシステムではサポートされていません。</value>
+  </data>
+  <data name="OcrError" xml:space="preserve">
+    <value>OCR 実行中にエラーが発生しました。</value>
+  </data>
+  <data name="OcrTimeout" xml:space="preserve">
+    <value>OCR 操作 がタイムアウトしました。</value>
+  </data>
+  <data name="WorkerCrash" xml:space="preserve">
+    <value>ワーカープロセスがクラッシュしました。</value>
+  </data>
+  <data name="WorkerCrashWindows" xml:space="preserve">
+    <value>ワーカープロセスがクラッシュしました。Windows イベントビューアーを確認してください。</value>
+  </data>
+  <data name="UnknownScanner" xml:space="preserve">
+    <value>不明なスキャナー</value>
+  </data>
+</root>

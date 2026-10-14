@@ -1,0 +1,260 @@
+﻿using System.Globalization;
+using NAPS2.Platform;
+
+namespace NAPS2.Images;
+
+/// <summary>
+/// Represents a page size, e.g. US Letter (8.5 x 11 in) or A4 (210 x 297 mm).
+/// </summary>
+public record PageSize
+{
+    public static PageSize Letter = new("8.5", "11", PageSizeUnit.Inch);
+
+    public static PageSize Legal = new("8.5", "14", PageSizeUnit.Inch);
+
+    public static PageSize A5 = new("148", "210", PageSizeUnit.Millimetre);
+
+    public static PageSize A4 = new("210", "297", PageSizeUnit.Millimetre);
+
+    public static PageSize A3 = new("297", "420", PageSizeUnit.Millimetre);
+
+    public static PageSize B5 = new("176", "250", PageSizeUnit.Millimetre);
+
+    public static PageSize B4 = new("250", "353", PageSizeUnit.Millimetre);
+
+    private static readonly PageSize[] WellKnownSizes = [Letter, Legal, A5, A4, A3, B5, B4];
+
+    private static readonly Lazy<PageSize?> LazySystemDefault = new(() => PlatformCompat.System.SystemDefaultPageSize);
+
+    /// <summary>
+    /// Gets the default paper size for the user's system (e.g. Letter in the US, A4 in most other places), or Letter by default.
+    /// </summary>
+    public static PageSize SystemDefault => LazySystemDefault.Value ?? Letter;
+
+    /// <summary>
+    /// Finds the well-known page size (e.g. A4) matching the given dimensions within a small tolerance (1 mm), or null
+    /// if there's no match.
+    /// </summary>
+    internal static PageSize? FindWellKnownSize(decimal width, decimal height, PageSizeUnit unit)
+    {
+        const decimal toleranceMm = 1;
+        var size = new PageSize(width, height, unit);
+        return WellKnownSizes.FirstOrDefault(x =>
+            Math.Abs(x.WidthInMm - size.WidthInMm) <= toleranceMm &&
+            Math.Abs(x.HeightInMm - size.HeightInMm) <= toleranceMm);
+    }
+
+    public static PageSize? Parse(string? size)
+    {
+        if (size == null)
+            return null;
+
+        var wellKnownSize = size.ToLowerInvariant() switch
+        {
+            "letter" => Letter,
+            "legal" => Legal,
+            "a5" => A5,
+            "a4" => A4,
+            "a3" => A3,
+            "b5" => B5,
+            "b4" => B4,
+            _ => null
+        };
+        if (wellKnownSize != null)
+        {
+            return wellKnownSize;
+        }
+
+        var parts = size.Split(' ');
+        if (parts.Length == 1 && size.Length > 2)
+        {
+            // If there's no space separating the unit, assume the last 2 characters are the unit
+            parts = [size.Substring(0, size.Length - 2), size.Substring(size.Length - 2, 2)];
+        }
+        if (parts.Length != 2)
+            return null;
+        var dims = parts[0].Split('x');
+        if (dims.Length != 2)
+            return null;
+        if (!decimal.TryParse(dims[0], NumberStyles.AllowDecimalPoint, CultureInfo.InvariantCulture, out var width))
+            return null;
+        if (!decimal.TryParse(dims[1], NumberStyles.AllowDecimalPoint, CultureInfo.InvariantCulture, out var height))
+            return null;
+        var unit = parts[1] switch
+        {
+            "mm" => PageSizeUnit.Millimetre,
+            "cm" => PageSizeUnit.Centimetre,
+            "in" => PageSizeUnit.Inch,
+            _ => (PageSizeUnit?) null
+        };
+        if (unit == null)
+            return null;
+        return new PageSize(width, height, unit.Value);
+    }
+
+    protected PageSize()
+    {
+    }
+
+    public PageSize(string width, string height, PageSizeUnit unit)
+    {
+        Width = decimal.Parse(width, CultureInfo.InvariantCulture);
+        Height = decimal.Parse(height, CultureInfo.InvariantCulture);
+        Unit = unit;
+    }
+
+    public PageSize(decimal width, decimal height, PageSizeUnit unit)
+    {
+        Width = width;
+        Height = height;
+        Unit = unit;
+    }
+
+    public decimal Width { get; protected set; }
+
+    public decimal Height { get; protected set; }
+
+    public PageSizeUnit Unit { get; protected set; }
+
+    public decimal WidthInMm
+    {
+        get
+        {
+            switch (Unit)
+            {
+                case PageSizeUnit.Inch:
+                    return Width * 25.4m;
+                case PageSizeUnit.Centimetre:
+                    return Width * 10;
+                case PageSizeUnit.Millimetre:
+                    return Width;
+                default:
+                    throw new ArgumentException();
+            }
+        }
+    }
+
+    public decimal WidthInInches
+    {
+        get
+        {
+            switch (Unit)
+            {
+                case PageSizeUnit.Inch:
+                    return Width;
+                case PageSizeUnit.Centimetre:
+                    return Width * 0.393701m;
+                case PageSizeUnit.Millimetre:
+                    return Width * 0.0393701m;
+                default:
+                    throw new ArgumentException();
+            }
+        }
+    }
+
+    public decimal WidthInCm
+    {
+        get
+        {
+            switch (Unit)
+            {
+                case PageSizeUnit.Inch:
+                    return Width * 2.54m;
+                case PageSizeUnit.Centimetre:
+                    return Width;
+                case PageSizeUnit.Millimetre:
+                    return Width / 10;
+                default:
+                    throw new ArgumentException();
+            }
+        }
+    }
+
+    public int WidthInThousandthsOfAnInch => (int)(WidthInInches * 1000);
+
+    public decimal HeightInMm
+    {
+        get
+        {
+            switch (Unit)
+            {
+                case PageSizeUnit.Inch:
+                    return Height * 25.4m;
+                case PageSizeUnit.Centimetre:
+                    return Height * 10;
+                case PageSizeUnit.Millimetre:
+                    return Height;
+                default:
+                    throw new ArgumentException();
+            }
+        }
+    }
+
+    public decimal HeightInInches
+    {
+        get
+        {
+            switch (Unit)
+            {
+                case PageSizeUnit.Inch:
+                    return Height;
+                case PageSizeUnit.Centimetre:
+                    return Height * 0.393701m;
+                case PageSizeUnit.Millimetre:
+                    return Height * 0.0393701m;
+                default:
+                    throw new ArgumentException();
+            }
+        }
+    }
+
+    public decimal HeightInCm
+    {
+        get
+        {
+            switch (Unit)
+            {
+                case PageSizeUnit.Inch:
+                    return Height * 2.54m;
+                case PageSizeUnit.Centimetre:
+                    return Height;
+                case PageSizeUnit.Millimetre:
+                    return Height / 10;
+                default:
+                    throw new ArgumentException();
+            }
+        }
+    }
+
+    public int HeightInThousandthsOfAnInch => (int)(HeightInInches * 1000);
+
+    /// <summary>
+    /// Gets the same page size expressed in the specified unit.
+    /// </summary>
+    public PageSize ConvertTo(PageSizeUnit unit)
+    {
+        switch (unit)
+        {
+            case PageSizeUnit.Inch:
+                return new PageSize(WidthInInches, HeightInInches, unit);
+            case PageSizeUnit.Centimetre:
+                return new PageSize(WidthInCm, HeightInCm, unit);
+            case PageSizeUnit.Millimetre:
+                return new PageSize(WidthInMm, HeightInMm, unit);
+            default:
+                throw new ArgumentException();
+        }
+    }
+
+    public override string ToString()
+    {
+        var unit = Unit switch
+        {
+            PageSizeUnit.Centimetre => "cm",
+            PageSizeUnit.Millimetre => "mm",
+            PageSizeUnit.Inch => "in",
+            _ => throw new InvalidOperationException("Invalid page size unit")
+        };
+        return $"{Width:0.#####}x{Height:0.#####} {unit}";
+    }
+}

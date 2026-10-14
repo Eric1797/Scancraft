@@ -1,0 +1,34 @@
+﻿syntax = "proto3";
+
+package NAPS2.Remoting;
+
+import "google/protobuf/empty.proto";
+
+service ProcessCoordinatorService {
+	rpc Activate (ActivateRequest) returns (google.protobuf.Empty) {}
+	rpc CloseWindow (CloseWindowRequest) returns (google.protobuf.Empty) {}
+	rpc StopSharingServer (StopSharingServerRequest) returns (StopSharingServerResponse) {}
+	rpc ScanWithDevice (ScanWithDeviceRequest) returns (google.protobuf.Empty) {}
+	rpc OpenFile (OpenFileRequest) returns (google.protobuf.Empty) {}
+}
+
+message ActivateRequest {
+}
+
+message CloseWindowRequest {
+}
+
+message StopSharingServerRequest {
+}
+
+message StopSharingServerResponse {
+	bool stopped = 1;
+}
+
+message ScanWithDeviceRequest {
+	string device = 1;
+}
+
+message OpenFileRequest {
+	repeated string path = 1;
+}

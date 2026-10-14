@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="DeviceNotFound" xml:space="preserve">
+    <value>ไม่พบเครื่องสแกนเนอร์ที่เลือก</value>
+  </data>
+  <data name="DeviceOffline" xml:space="preserve">
+    <value>เครื่องสแกนเนอร์ที่เลือกออฟไลน์อยู่</value>
+  </data>
+  <data name="DeviceCommunicationFailure" xml:space="preserve">
+    <value>การเชื่อมต่อกับเครื่องสแกนเนอร์ขัดข้อง</value>
+  </data>
+  <data name="NAPS2" xml:space="preserve">
+    <value>NAPS2</value>
+  </data>
+  <data name="NoDeviceSelected" xml:space="preserve">
+    <value>ไม่ได้เลือกอุปกรณ์</value>
+  </data>
+  <data name="NoDevicesFound" xml:space="preserve">
+    <value>ตรวจไม่พบเครื่องสแกน</value>
+  </data>
+  <data name="UnknownDriverError" xml:space="preserve">
+    <value>เกิดข้อผิดพลาดที่ไดรเวอร์ของเครื่องสแกน</value>
+  </data>
+  <data name="Version" xml:space="preserve">
+    <value>เวอร์ชั่น {0}</value>
+  </data>
+  <data name="ImportErrorCouldNot" xml:space="preserve">
+    <value>ไม่สามารถนำเข้าไฟล์ '{0}' ได้</value>
+  </data>
+  <data name="NoFeederSupport" xml:space="preserve">
+    <value>เครื่องสแกนเนอร์ที่เลือกไม่รองรับการใช้ถาดป้อนกระดาษอัตโนมัติ (Feeder) หากเครื่องของคุณมีถาดป้อนกระดาษ ให้ลองเปลี่ยนไปใช้ไดรเวอร์อื่น</value>
+  </data>
+  <data name="NoPagesInFeeder" xml:space="preserve">
+    <value>ไม่มีหน้ากระดาษในเครื่องป้อน</value>
+  </data>
+  <data name="PdfNoPermissionToExtractContent" xml:space="preserve">
+    <value>You do not have permission to copy content from the file '{0}'.</value>
+  </data>
+  <data name="NoDuplexSupport" xml:space="preserve">
+    <value>เครื่องสแกนเนอร์ที่เลือกไม่รองรับการสแกนสองหน้า (Duplex) หากเครื่องของคุณสแกนสองหน้าได้ ให้ลองเปลี่ยนไปใช้ไดรเวอร์อื่น</value>
+  </data>
+  <data name="DeviceBusy" xml:space="preserve">
+    <value>เครื่องสแกนเนอร์ที่เลือกกำลังทำงานอยู่</value>
+  </data>
+  <data name="DeviceCoverOpen" xml:space="preserve">
+    <value>ฝาปิดเครื่องสแกนเนอร์เปิดอยู่</value>
+  </data>
+  <data name="DevicePaperJam" xml:space="preserve">
+    <value>เครื่องสแกนเนอร์กระดาษติด</value>
+  </data>
+  <data name="DeviceWarmingUp" xml:space="preserve">
+    <value>เครื่องสแกนเนอร์กำลังอุ่นเครื่อง</value>
+  </data>
+  <data name="SaneNotAvailable" xml:space="preserve">
+    <value>ไม่พบระบบ OCR กรุณาตรวจสอบให้แน่ใจว่าได้ติดตั้งแพ็กเกจที่จำเป็นเรียบร้อยแล้ว:</value>
+  </data>
+  <data name="TesseractNotAvailable" xml:space="preserve">
+    <value>ไม่พบระบบ OCR กรุณาตรวจสอบให้แน่ใจว่าได้ติดตั้งแพ็กเกจที่จำเป็นเรียบร้อยแล้ว:</value>
+  </data>
+  <data name="DriverNotSupported" xml:space="preserve">
+    <value>ระบบนี้ไม่รองรับไดรเวอร์ที่เลือก</value>
+  </data>
+  <data name="OcrError" xml:space="preserve">
+    <value>เกิด error ระหว่างที่ OCR ทำงาน</value>
+  </data>
+  <data name="OcrTimeout" xml:space="preserve">
+    <value>การทำงานของ OCR หมดเวลา</value>
+  </data>
+  <data name="WorkerCrash" xml:space="preserve">
+    <value>กระบวนการทำงานภายใน (Worker process) เกิดข้อผิดพลาด</value>
+  </data>
+  <data name="WorkerCrashWindows" xml:space="preserve">
+    <value>กระบวนการทำงานภายในเกิดข้อผิดพลาด กรุณาตรวจสอบที่ Windows Event Viewer</value>
+  </data>
+  <data name="UnknownScanner" xml:space="preserve">
+    <value>Unknown Scanner</value>
+  </data>
+</root>

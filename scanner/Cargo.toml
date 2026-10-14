@@ -1,0 +1,49 @@
+[package]
+name = "pdfcraft-scanner"
+description = "Standalone printer / scanner app built on PdfCraft engine libs (scan to PDF, OCR, print). Working behaviour lands later."
+version = "0.1.0"
+edition = "2024"
+license = "MIT OR Apache-2.0"
+rust-version = "1.90"
+
+# Standalone: detach from the PdfCraft workspace so `cargo` inside
+# scancraft/scanner/ does not inherit ../../pdf craft/Cargo.toml's workspace.
+[workspace]
+
+[lints]
+workspace = true
+
+[workspace.lints.rust]
+unsafe_code = "forbid"
+
+[workspace.lints.clippy]
+dbg_macro = "warn"
+todo = "warn"
+
+[dependencies]
+# --- PdfCraft libs reused by path (no code copied) ---
+pdfcraft-print = { path = "../../pdf craft/crates/print", version = "0.4.0" }
+pdfcraft-create = { path = "../../pdf craft/crates/create", version = "0.4.0" }
+pdfcraft-ocr = { path = "../../pdf craft/crates/ocr", version = "0.4.0" }
+pdfcraft-render = { path = "../../pdf craft/crates/render", version = "0.4.0" }
+pdfcraft-engine = { path = "../../pdf craft/crates/engine", version = "0.4.0" }
+pdfcraft-model = { path = "../../pdf craft/crates/model", version = "0.4.0" }
+pdfcraft-cos = { path = "../../pdf craft/crates/cos", version = "0.4.0" }
+pdfcraft-content = { path = "../../pdf craft/crates/content", version = "0.4.0" }
+pdfcraft-platform = { path = "../../pdf craft/crates/platform", version = "0.4.0" }
+pdfcraft-ui-egui = { path = "../../pdf craft/crates/ui-egui", version = "0.4.0" }
+
+# --- Foundation (same versions as parent workspace) ---
+thiserror = "2"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+log = "0.4"
+egui = "0.36"
+eframe = { version = "0.36", default-features = false }
+
+[profile.dev]
+opt-level = 1
+
+[profile.release]
+lto = "thin"
+codegen-units = 1

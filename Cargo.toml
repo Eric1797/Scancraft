@@ -1,0 +1,38 @@
+[workspace]
+resolver = "3"
+members = ["crates/*", "apps/*"]
+# NOTE: scanner/ is a detached pre-spec scaffold (own [workspace]); it is
+# intentionally not a member here. It migrates into apps/crates per D3.
+
+[workspace.package]
+version = "0.1.0"
+edition = "2024"
+license = "MIT OR Apache-2.0"
+rust-version = "1.90"
+
+[workspace.dependencies]
+scancraft-model = { path = "crates/scancraft-model", version = "0.1.0" }
+scancraft-scan-core = { path = "crates/scancraft-scan-core", version = "0.1.0" }
+scancraft-scan-mock = { path = "crates/scancraft-scan-mock", version = "0.1.0" }
+scancraft-engine = { path = "crates/scancraft-engine", version = "0.1.0" }
+scancraft-ui-kit = { path = "crates/scancraft-ui-kit", version = "0.1.0" }
+
+# UI (same versions as PdfCraft)
+egui = "0.36"
+eframe = { version = "0.36", default-features = false }
+
+[workspace.lints.rust]
+unsafe_code = "forbid"
+
+[workspace.lints.clippy]
+dbg_macro = "warn"
+todo = "warn"
+
+[profile.release]
+# R3 (max speed): opt-level 3. Size reported vs 12 MB aim / 25 MB hard fail.
+opt-level = 3
+lto = "thin"
+codegen-units = 1
+
+[profile.dev]
+opt-level = 1

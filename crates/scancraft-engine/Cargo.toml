@@ -1,0 +1,18 @@
+[package]
+name = "scancraft-engine"
+description = "ScanCraft engine facade: sessions, documents, undo/redo. Frontends talk only to this."
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+rust-version.workspace = true
+
+[lints]
+workspace = true
+
+[dependencies]
+scancraft-model = { workspace = true }
+scancraft-scan-core = { workspace = true }
+
+# Tests only: engine never depends on concrete backends in production code.
+[dev-dependencies]
+scancraft-scan-mock = { workspace = true }

@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>net10.0;net462</TargetFrameworks>
+    <!-- As these are just samples, no need for "windows only api" warnings for GdiImageContext -->
+    <NoWarn>CA1416</NoWarn>
+  </PropertyGroup>
+  
+  <Import Project="..\NAPS2.Setup\targets\CommonTargets.targets" />
+  <Import Project="..\NAPS2.Setup\targets\SdkUsers.targets" />
+  
+  <ItemGroup>
+    <ProjectReference Include="..\NAPS2.Escl.Server\NAPS2.Escl.Server.csproj" />
+    <ProjectReference Include="..\NAPS2.Sdk\NAPS2.Sdk.csproj" />
+    <ProjectReference Include="..\NAPS2.Images.Gdi\NAPS2.Images.Gdi.csproj" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <PackageReference Include="System.Linq.Async" Version="7.0.1" />
+  </ItemGroup>
+  
+</Project>

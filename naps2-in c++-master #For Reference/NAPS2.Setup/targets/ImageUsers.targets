@@ -1,0 +1,9 @@
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+    <ItemGroup>
+        <Using Include="NAPS2.Images" />
+        <Using Include="NAPS2.Images.Transforms" />
+    </ItemGroup>
+
+    
+</Project>

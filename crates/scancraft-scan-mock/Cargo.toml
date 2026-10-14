@@ -1,0 +1,14 @@
+[package]
+name = "scancraft-scan-mock"
+description = "Deterministic fake scanner for tests and UI development. Dev-only demo device."
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+rust-version.workspace = true
+
+[lints]
+workspace = true
+
+[dependencies]
+scancraft-model = { workspace = true }
+scancraft-scan-core = { workspace = true }

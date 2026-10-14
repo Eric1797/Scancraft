@@ -1,0 +1,16 @@
+[package]
+name = "scancraft-cli"
+description = "ScanCraft headless CLI (M0: device/profile listing over the mock backend)."
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+rust-version.workspace = true
+
+[lints]
+workspace = true
+
+[dependencies]
+scancraft-model = { workspace = true }
+scancraft-scan-core = { workspace = true }
+scancraft-scan-mock = { workspace = true }
+scancraft-engine = { workspace = true }

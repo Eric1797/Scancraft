@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="DeviceNotFound" xml:space="preserve">
+    <value>Не вдалося знайти вибраний сканер.</value>
+  </data>
+  <data name="DeviceOffline" xml:space="preserve">
+    <value>Вибраний сканер не в мережі.</value>
+  </data>
+  <data name="DeviceCommunicationFailure" xml:space="preserve">
+    <value>Зв’язок зі сканувальним пристроєм перервано.</value>
+  </data>
+  <data name="NAPS2" xml:space="preserve">
+    <value>NAPS2</value>
+  </data>
+  <data name="NoDeviceSelected" xml:space="preserve">
+    <value>Не вибрано пристрій.</value>
+  </data>
+  <data name="NoDevicesFound" xml:space="preserve">
+    <value>Сканувального пристрою не знайдено.</value>
+  </data>
+  <data name="UnknownDriverError" xml:space="preserve">
+    <value>Сталася помилка драйвера сканування.</value>
+  </data>
+  <data name="Version" xml:space="preserve">
+    <value>Версія {0}</value>
+  </data>
+  <data name="ImportErrorCouldNot" xml:space="preserve">
+    <value>Не вдалося імпортувати файл «{0}».</value>
+  </data>
+  <data name="NoFeederSupport" xml:space="preserve">
+    <value>Вибраний сканер не підтримує автоматичну подачу документа. Якщо ваш сканер все ж має автоматичну подачу документа, спробуйте вибрати інший драйвер.</value>
+  </data>
+  <data name="NoPagesInFeeder" xml:space="preserve">
+    <value>У подавачі немає сторінок.</value>
+  </data>
+  <data name="PdfNoPermissionToExtractContent" xml:space="preserve">
+    <value>У вас немає дозволу копіювати вміст із файлу «{0}».</value>
+  </data>
+  <data name="NoDuplexSupport" xml:space="preserve">
+    <value>Вибраний сканер не підтримує двостороннє сканування. Якщо ваш сканер все ж підтримує двостороннє сканування, спробуйте вибрати інший драйвер.</value>
+  </data>
+  <data name="DeviceBusy" xml:space="preserve">
+    <value>Вибраний сканер зайнятий.</value>
+  </data>
+  <data name="DeviceCoverOpen" xml:space="preserve">
+    <value>Кришку сканера відкрито.</value>
+  </data>
+  <data name="DevicePaperJam" xml:space="preserve">
+    <value>У сканері застряг документ.</value>
+  </data>
+  <data name="DeviceWarmingUp" xml:space="preserve">
+    <value>Сканер прогрівається.</value>
+  </data>
+  <data name="SaneNotAvailable" xml:space="preserve">
+    <value>Драйвер SANE недоступний. Переконайтеся, що встановлено необхідні пакети:</value>
+  </data>
+  <data name="TesseractNotAvailable" xml:space="preserve">
+    <value>Механізм розпізнавання (OCR) недоступний. Переконайтеся, що встановлено необхідний пакет:</value>
+  </data>
+  <data name="DriverNotSupported" xml:space="preserve">
+    <value>Вибраний драйвер не підтримується в цій системі.</value>
+  </data>
+  <data name="OcrError" xml:space="preserve">
+    <value>Під час розпізнавання сталася помилка.</value>
+  </data>
+  <data name="OcrTimeout" xml:space="preserve">
+    <value>Час очікування розпізнавання закінчився.</value>
+  </data>
+  <data name="WorkerCrash" xml:space="preserve">
+    <value>Робочий процес аварійно завершив роботу.</value>
+  </data>
+  <data name="WorkerCrashWindows" xml:space="preserve">
+    <value>Робочий процес аварійно завершив роботу. Перевірте засіб перегляду подій Windows.</value>
+  </data>
+  <data name="UnknownScanner" xml:space="preserve">
+    <value>Невідомий сканер</value>
+  </data>
+</root>

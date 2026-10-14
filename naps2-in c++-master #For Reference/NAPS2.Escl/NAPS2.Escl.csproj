@@ -1,0 +1,37 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFrameworks>net8;net10.0;net462;netstandard2.0</TargetFrameworks>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <LangVersion>14</LangVersion>
+        <NoWarn>PolyfillTargetsForNuget</NoWarn>
+
+        <Title>NAPS2.Escl</Title>
+        <Product>NAPS2.Escl</Product>
+        <Description>ESCL client for NAPS2.Sdk.</Description>
+        <PackageTags>naps2 escl</PackageTags>
+    </PropertyGroup>
+
+    <Import Project="..\NAPS2.Setup\targets\SdkPackageTargets.targets" />
+
+    <ItemGroup>
+        <PackageReference Include="NAPS2.Mdns" Version="1.0.1" />
+        <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="10.0.10" />
+         <PackageReference Include="Polyfill" Version="11.0.1" PrivateAssets="all" />
+        <PackageReference Include="StandardSocketsHttpHandler" Version="2.2.0.10" />
+        <PackageReference Include="System.Net.Http" Version="4.3.4" />
+        <PackageReference Include="System.Private.Uri" Version="4.3.2" />
+        <PackageReference Include="System.ValueTuple" Version="4.6.2" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleTo">
+            <_Parameter1>NAPS2.Escl.Server</_Parameter1>
+        </AssemblyAttribute>
+        <AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleTo">
+            <_Parameter1>NAPS2.Escl.Tests</_Parameter1>
+        </AssemblyAttribute>
+    </ItemGroup>
+
+</Project>

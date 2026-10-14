@@ -1,0 +1,1962 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: naps2\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-04-19 21:51+0000\n"
+"PO-Revision-Date: 2026-10-11 22:01\n"
+"Last-Translator: \n"
+"Language-Team: Finnish\n"
+"Language: fi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Translate Toolkit 1.13.0\n"
+"X-Poedit-SourceCharset: iso-8859-1\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Crowdin-Project: naps2\n"
+"X-Crowdin-Project-ID: 531762\n"
+"X-Crowdin-Language: fi\n"
+"X-Crowdin-File: templates.pot\n"
+"X-Crowdin-File-ID: 75\n"
+
+#: UiStrings.resx$SaveButtonDefaultAction$Message
+msgid "\"Save\" button default action:"
+msgstr "\"Tallenna\" painikkeen oletustoiminto:"
+
+#: UiStrings.resx$ScanButtonDefaultAction$Message
+msgid "\"Scan\" button default action:"
+msgstr "\"Skannaa\" painikkeen oletustoiminto:"
+
+#: UiStrings.resx$ScanChangesDefaultProfile$Message
+msgid "\"Scan\" menu changes default profile"
+msgstr "\"Skannaa\" valikko muuttaa oletusprofiilia"
+
+#: UiStrings.resx$DeviceFoundSingular$Message
+msgid "1 device found."
+msgstr "1 laite löytyi."
+
+#: SettingsResources.resx$BitDepth_24Color$Message
+msgid "24-bit Color"
+msgstr "24-bittinen väri"
+
+#: SettingsResources.resx$PageSize_A3$Message
+msgid "A3 (297x420 mm)"
+msgstr "A3 (297x420 mm)"
+
+#: SettingsResources.resx$PageSize_A4$Message
+msgid "A4 (210x297 mm)"
+msgstr "A4 (210x297 mm)"
+
+#: SettingsResources.resx$PageSize_A5$Message
+msgid "A5 (148x210 mm)"
+msgstr "A5 (148x210 mm)"
+
+#: UiStrings.resx$About$Message
+#: UiStrings.resx$AboutFormTitle$Message
+msgid "About"
+msgstr "Tietoja"
+
+#: MiscResources.resx$AcquiringData$Message
+msgid "Acquiring data..."
+msgstr "Haetaan tietoja..."
+
+#: UiStrings.resx$Action$Message
+msgid "Action"
+msgstr "Toiminto"
+
+#: UiStrings.resx$Advanced$Message
+msgid "Advanced"
+msgstr "Lisäasetukset"
+
+#: UiStrings.resx$AdvancedProfileFormTitle$Message
+msgid "Advanced Profile Settings"
+msgstr "Profiilin lisäasetukset"
+
+#: MiscResources.resx$AllCount$Message
+msgid "All ({0})"
+msgstr "Kaikki ({0})"
+
+#: MiscResources.resx$FileTypeAllFiles$Message
+msgid "All Files"
+msgstr "Kaikki tiedostot"
+
+#: UiStrings.resx$AllowAnnotations$Message
+msgid "Allow Annotations"
+msgstr "Salli kommentit"
+
+#: UiStrings.resx$AllowContentCopying$Message
+msgid "Allow Content Copying"
+msgstr "Salli sisällön kopiointi"
+
+#: UiStrings.resx$AllowContentCopyingForAccessibility$Message
+msgid "Allow Content Copying for Accessibility"
+msgstr "Salli sisällön kopioiminen helppokäyttötoimintoja varten"
+
+#: UiStrings.resx$AllowDocumentAssembly$Message
+msgid "Allow Document Assembly"
+msgstr "Salli asiakirjan kokoaminen"
+
+#: UiStrings.resx$AllowDocumentModification$Message
+msgid "Allow Document Modification"
+msgstr "Salli asiakirjan muokkaus"
+
+#: UiStrings.resx$AllowFormFilling$Message
+msgid "Allow Form Filling"
+msgstr "Salli lomakkeiden täyttäminen"
+
+#: UiStrings.resx$AllowFullQualityPrinting$Message
+msgid "Allow Full Quality Printing"
+msgstr "Salli korkealaatuinen tulostus"
+
+#: UiStrings.resx$AllowPrinting$Message
+msgid "Allow Printing"
+msgstr "Salli tulostaminen"
+
+#: UiStrings.resx$AltKey$Message
+msgid "Alt"
+msgstr "Alt"
+
+#: UiStrings.resx$AltDeinterleave$Message
+msgid "Alternate Deinterleave"
+msgstr "Vaihtoehtoinen lomituksen poisto"
+
+#: UiStrings.resx$AltInterleave$Message
+msgid "Alternate Interleave"
+msgstr "Vaihtoehtoinen lomitus"
+
+#: UiStrings.resx$AlwaysAsk$Message
+msgid "Always Ask"
+msgstr "Kysy aina"
+
+#: SettingsResources.resx$SaveButtonDefaultAction_AlwaysPrompt$Message
+#: SettingsResources.resx$ScanButtonDefaultAction_AlwaysPrompt$Message
+msgid "Always Prompt"
+msgstr "Kysy aina"
+
+#: UiStrings.resx$AlwaysShowPreview$Message
+msgid "Always show preview"
+msgstr ""
+
+#: MiscResources.resx$PdfImportComponentNeeded$Message
+msgid "An additional component is needed to import this PDF file. Would you like to download it now?"
+msgstr "Tämän PDF-tiedoston tuomiseen tarvitaan lisäkomponentti. Haluatko ladata sen nyt?"
+
+#: SdkResources.resx$OcrError$Message
+msgid "An error occurred running OCR."
+msgstr "OCR:n käytössä tapahtui virhe."
+
+#: MiscResources.resx$AuthError$Message
+msgid "An error occurred when trying to authorize."
+msgstr "Virhe yritettäessä valtuuttaa."
+
+#: MiscResources.resx$AutoSaveError$Message
+msgid "An error occurred when trying to auto save."
+msgstr "Virhe automaattisessa tallennuksessa."
+
+#: MiscResources.resx$UpdateError$Message
+msgid "An error occurred when trying to install the update."
+msgstr "Virhe päivityksen asennuksessa."
+
+#: MiscResources.resx$ErrorSaving$Message
+msgid "An error occurred when trying to save the file."
+msgstr "Virhe tiedoston tallennuksessa."
+
+#: MiscResources.resx$ErrorEmailing$Message
+msgid "An error occurred when trying to send the email."
+msgstr "Virhe sähköpostin lähetykessa."
+
+#: MiscResources.resx$EmailError$Message
+msgid "An error occurred while trying to send an email."
+msgstr "Virhe lähetettäessä sähköpostia."
+
+#: MiscResources.resx$UnknownDriverError$Message
+#: SdkResources.resx$UnknownDriverError$Message
+msgid "An error occurred with the scanning driver."
+msgstr "Virhe skannausajurissa."
+
+#: MiscResources.resx$ExitWithActiveOperations$Message
+msgid "An operation is in progress. Are you sure you want to exit and cancel the operation?"
+msgstr "Toiminto on käynnissä. Haluatko varmasti poistua ja peruuttaa toiminnon?"
+
+#: MiscResources.resx$BatchError$Message
+msgid "An unknown error occurred during the batch scan."
+msgstr "Tuntematon virhe sarjaskannauksessa."
+
+#: MiscResources.resx$UpdateAvailable$Message
+msgid "An update is available."
+msgstr "Päivitys on saatavilla."
+
+#: MiscResources.resx$OcrUpdateAvailable$Message
+msgid "An update to OCR is available."
+msgstr "OCR-päivitys on saatavana."
+
+#: UiStrings.resx$AppleDriver$Message
+msgid "Apple Driver"
+msgstr "Applen Ajuri"
+
+#: SettingsResources.resx$EmailProviderType_AppleMail$Message
+msgid "Apple Mail"
+msgstr "Apple Sähköposti"
+
+#: UiStrings.resx$Application$Message
+msgid "Application"
+msgstr "Sovellus"
+
+#: UiStrings.resx$BrightnessContrastAfterScan$Message
+msgid "Apply brightness/contrast after scan"
+msgstr "Käytä kirkkautta/kontrastia skannauksen jälkeen"
+
+#: UiStrings.resx$ApplyToSelected$Message
+msgid "Apply to all {0} selected images"
+msgstr "Käytä kaikissa  {0} valitussa kuvassa"
+
+#: MiscResources.resx$ConfirmCancelBatch$Message
+msgid "Are you sure you want to cancel the batch scan?"
+msgstr "Haluatko varmasti peruuttaa sarjaskannauksen?"
+
+#: MiscResources.resx$ConfirmClearItems$Message
+msgid "Are you sure you want to clear {0} item(s)?"
+msgstr "Haluatko varmasti tyhjentää {0} valintaa?"
+
+#: MiscResources.resx$ConfirmDelete$Message
+msgid "Are you sure you want to delete \"{0}\"?"
+msgstr "Haluatko varmasti poistaa {0}?"
+
+#: MiscResources.resx$ConfirmDeleteSingleProfile$Message
+msgid "Are you sure you want to delete the profile {0}?"
+msgstr "Haluatko varmasti poistaa profiilin {0}?"
+
+#: MiscResources.resx$ConfirmDeleteItems$Message
+msgid "Are you sure you want to delete {0} item(s)?"
+msgstr "Haluatko varmasti poistaa {0} tiedostoa?"
+
+#: MiscResources.resx$ConfirmDeleteMultipleProfiles$Message
+msgid "Are you sure you want to delete {0} profiles?"
+msgstr "Haluatko varmasti poistaa {0} profiilia?"
+
+#: UiStrings.resx$ConfirmDeleteSharedDevice$Message
+msgid "Are you sure you want to stop sharing {0}?"
+msgstr "Haluatko varmasti lopettaa jakamisen {0}?"
+
+#: MiscResources.resx$ConfirmResetImages$Message
+msgid "Are you sure you want undo your changes to {0} image(s)?"
+msgstr "Haluatko varmasti peruuttaa kuvien ( {0} ) muutokset?"
+
+#: UiStrings.resx$Assign$Message
+msgid "Assign"
+msgstr "Määritä"
+
+#: UiStrings.resx$AttachmentNameLabel$Message
+msgid "Attachment Name:"
+msgstr "Liitteen nimi:"
+
+#: UiStrings.resx$AuthorLabel$Message
+msgid "Author:"
+msgstr "Tekijä:"
+
+#: UiStrings.resx$AuthorizeFormTitle$Message
+msgid "Authorize"
+msgstr "Valtuuta"
+
+#: SettingsResources.resx$TiffComp_Auto$Message
+msgid "Auto"
+msgstr "Automaattinen"
+
+#: UiStrings.resx$AutoSaveSettings$Message
+#: UiStrings.resx$AutoSaveSettingsFormTitle$Message
+msgid "Auto Save Settings"
+msgstr "Automaattisen tallennuksen asetukset"
+
+#: UiStrings.resx$AutoCrop$Message
+msgid "Auto-Crop"
+msgstr ""
+
+#: UiStrings.resx$AutoCropScannedPages$Message
+msgid "Auto-crop scanned pages"
+msgstr ""
+
+#: UiStrings.resx$AutoIncrementing1Digit$Message
+msgid "Auto-incrementing number (1 digits)"
+msgstr "Automaattinen lisäys (1 numero)"
+
+#: UiStrings.resx$AutoIncrementing2Digit$Message
+msgid "Auto-incrementing number (2 digits)"
+msgstr "Automaattinen lisäys (2 numeroa)"
+
+#: UiStrings.resx$AutoIncrementing3Digit$Message
+msgid "Auto-incrementing number (3 digits)"
+msgstr "Automaattinen lisäys (3 numeroa)"
+
+#: UiStrings.resx$AutoIncrementing4Digit$Message
+msgid "Auto-incrementing number (4 digits)"
+msgstr "Automaattinen lisäys (4 numeroa)"
+
+#: UiStrings.resx$RunOcrAfterScanning$Message
+msgid "Automatically run OCR after scanning"
+msgstr "Tunnista teksti optisesti automaattisesti skannauksen jälkeen"
+
+#: SettingsResources.resx$PageSize_B4$Message
+msgid "B4 (250x353 mm)"
+msgstr "B4 (250x353 mm)"
+
+#: SettingsResources.resx$PageSize_B5$Message
+msgid "B5 (176x250 mm)"
+msgstr "B5 (176x250 mm)"
+
+#: UiStrings.resx$BatchScan$Message
+#: UiStrings.resx$BatchScanFormTitle$Message
+msgid "Batch Scan"
+msgstr "Sarjaskannaus"
+
+#: MiscResources.resx$BatchStatusCancelled$Message
+msgid "Batch cancelled."
+msgstr "Sarjaskannaus peruutettu."
+
+#: MiscResources.resx$BatchStatusComplete$Message
+msgid "Batch completed successfully."
+msgstr "Sarjaskannaus tehty onnistuneesti."
+
+#: MiscResources.resx$BatchStatusError$Message
+msgid "Batch scan stopped due to error."
+msgstr "Sarjaskannaus pysäytetty virheen takia."
+
+#: SettingsResources.resx$OcrMode_Best$Message
+msgid "Best"
+msgstr "Paras"
+
+#: UiStrings.resx$BitDepthLabel$Message
+msgid "Bit depth:"
+msgstr "Bittisyvyys:"
+
+#: MiscResources.resx$FileTypeBmp$Message
+msgid "Bitmap Files (*.bmp)"
+msgstr "Bittikarttatiedosto (.bmp)"
+
+#: SettingsResources.resx$BitDepth_1BlackAndWhite$Message
+#: UiStrings.resx$BlackAndWhite$Message
+msgid "Black and White"
+msgstr "Mustavalkoinen"
+
+#: UiStrings.resx$BlankPages$Message
+msgid "Blank Pages"
+msgstr "Tyhjät sivut"
+
+#: UiStrings.resx$BrightnessContrast$Message
+msgid "Brightness / Contrast"
+msgstr "Kirkkaus / kontrasti"
+
+#: UiStrings.resx$BrightnessLabel$Message
+msgid "Brightness:"
+msgstr "Kirkkaus:"
+
+#: SettingsResources.resx$TiffComp_Ccitt4$Message
+msgid "CCITT4"
+msgstr "CCITT4"
+
+#: UiStrings.resx$CantFindScannerFlatpak$Message
+msgid "Can't find your scanner? Read about limitations of the NAPS2 Flatpak."
+msgstr "Skanneria ei löytynyt? Lue NAPS2 Flatpakin rajoituksista."
+
+#: MiscResources.resx$Cancel$Message
+#: UiStrings.resx$Cancel$Message
+msgid "Cancel"
+msgstr "Peruuta"
+
+#: MiscResources.resx$CancelBatch$Message
+msgid "Cancel Batch"
+msgstr "Peruuta sarjaskannaus"
+
+#: MiscResources.resx$BatchStatusCancelling$Message
+msgid "Cancelling...."
+msgstr "Peruutetaan...."
+
+#: SettingsResources.resx$HorizontalAlign_Center$Message
+msgid "Center"
+msgstr "Keskitä"
+
+#: UiStrings.resx$Change$Message
+msgid "Change"
+msgstr "Muuta"
+
+#: UiStrings.resx$CheckForUpdates$Message
+msgid "Check for updates"
+msgstr "Tarkista päivitykset"
+
+#: MiscResources.resx$CheckingForUpdates$Message
+msgid "Checking..."
+msgstr "Tarkistetaan..."
+
+#: UiStrings.resx$EmailProviderFormTitle$Message
+msgid "Choose Email Provider"
+msgstr "Valitse sähköpostin lähetystapa"
+
+#: MiscResources.resx$ChooseProfile$Message
+msgid "Choose Profile"
+msgstr "Valitse profiili"
+
+#: UiStrings.resx$ChooseDevice$Message
+msgid "Choose device"
+msgstr "Valitse laite"
+
+#: MiscResources.resx$Clear$Message
+#: UiStrings.resx$Clear$Message
+msgid "Clear"
+msgstr "Tyhjennä"
+
+#: UiStrings.resx$ClearAll$Message
+msgid "Clear All"
+msgstr "Poista kaikki"
+
+#: UiStrings.resx$ClearAfterSaving$Message
+msgid "Clear images after saving"
+msgstr "Pyyhi kuvat tallennukset jälkeen"
+
+#: UiStrings.resx$SplitHelp$Message
+msgid "Click the buttons or use the arrow keys to change the split orientation."
+msgstr ""
+
+#: MiscResources.resx$Close$Message
+msgid "Close"
+msgstr "Sulje"
+
+#: UiStrings.resx$Combine$Message
+msgid "Combine"
+msgstr "Yhdistä"
+
+#: SdkResources.resx$DeviceCommunicationFailure$Message
+msgid "Communication with the scanning device was interrupted."
+msgstr "Yhteys skannauslaitteen kanssa keskeytyi."
+
+#: UiStrings.resx$Compatibility$Message
+msgid "Compatibility"
+msgstr "Yhteensopivuus"
+
+#: UiStrings.resx$Compress$Message
+msgid "Compress"
+msgstr ""
+
+#: UiStrings.resx$CompressionLabel$Message
+msgid "Compression:"
+msgstr "Pakkaus:"
+
+#: UiStrings.resx$Connect$Message
+msgid "Connect"
+msgstr "Yhdistä"
+
+#: UiStrings.resx$ConnectionError$Message
+msgid "Connection error."
+msgstr "Yhteysvirhe."
+
+#: UiStrings.resx$ContrastLabel$Message
+msgid "Contrast:"
+msgstr "Kontrasti:"
+
+#: UiStrings.resx$Copy$Message
+msgid "Copy"
+msgstr "Kopioi"
+
+#: MiscResources.resx$CopyProgress$Message
+msgid "Copy Progress"
+msgstr "Kopioinnin edistyminen"
+
+#: MiscResources.resx$Copying$Message
+msgid "Copying..."
+msgstr "Kopioidaan..."
+
+#: UiStrings.resx$CopyrightFormat$Message
+msgid "Copyright {0} NAPS2 Contributors"
+msgstr "Tekijänoikeudet {0} NAPS2 Avustajat"
+
+#: UiStrings.resx$CoverageThreshold$Message
+msgid "Coverage Threshold"
+msgstr "Peitto"
+
+#: UiStrings.resx$Crop$Message
+msgid "Crop"
+msgstr "Rajaa"
+
+#: UiStrings.resx$CropToPageSize$Message
+msgid "Crop to page size"
+msgstr "Rajaa sivun kokoon"
+
+#: UiStrings.resx$ControlKey$Message
+msgid "Ctrl"
+msgstr "Ctrl"
+
+#: MiscResources.resx$CustomPageSizeFormat$Message
+msgid "Custom ({0}x{1} {2})"
+msgstr "Mukautettu  ({0}x{1} {2})"
+
+#: UiStrings.resx$PageSizeFormTitle$Message
+msgid "Custom Page Size"
+msgstr "Mukautettu sivun koko"
+
+#: UiStrings.resx$ResolutionFormTitle$Message
+msgid "Custom Resolution"
+msgstr "Mukautettu tarkkuus"
+
+#: UiStrings.resx$CustomRotation$Message
+msgid "Custom Rotation"
+msgstr "Mukautettu kääntäminen"
+
+#: SettingsResources.resx$EmailProviderType_CustomSmtp$Message
+msgid "Custom SMTP"
+msgstr "Mukautettu SMTP"
+
+#: SettingsResources.resx$PageSize_Custom$Message
+#: SettingsResources.resx$Resolution_Custom$Message
+msgid "Custom..."
+msgstr "Mukautettu..."
+
+#: SettingsResources.resx$Theme_Dark$Message
+msgid "Dark"
+msgstr "Tumma"
+
+#: UiStrings.resx$Day2Digit$Message
+msgid "Day (01-31)"
+msgstr "Päivä (01-31)"
+
+#: SettingsResources.resx$PdfCompat_Default$Message
+#: SettingsResources.resx$Theme_Default$Message
+#: SettingsResources.resx$TwainImpl_Default$Message
+#: SettingsResources.resx$WiaVersion_Default$Message
+#: UiStrings.resx$Default$Message
+msgid "Default"
+msgstr "Oletus"
+
+#: UiStrings.resx$DefaultFilePathLabel$Message
+msgid "Default File Path:"
+msgstr "Oletuspolku:"
+
+#: UiStrings.resx$Deinterleave$Message
+msgid "Deinterleave"
+msgstr "Lomituksen poisto"
+
+#: MiscResources.resx$Delete$Message
+#: UiStrings.resx$Delete$Message
+msgid "Delete"
+msgstr "Poista"
+
+#: UiStrings.resx$Deskew$Message
+msgid "Deskew"
+msgstr "Suorista"
+
+#: MiscResources.resx$AutoDeskewProgress$Message
+msgid "Deskew Progress"
+msgstr "Suoristuksen eteneminen"
+
+#: UiStrings.resx$DeskewScannedPages$Message
+msgid "Deskew scanned pages"
+msgstr "Suorista skannatut sivut"
+
+#: MiscResources.resx$AutoDeskewing$Message
+msgid "Deskewing..."
+msgstr "Suoristetaan..."
+
+#: UiStrings.resx$DeviceLabel$Message
+msgid "Device:"
+msgstr "Laite:"
+
+#: UiStrings.resx$Dimensions$Message
+msgid "Dimensions"
+msgstr "Mittasuhteet"
+
+#: UiStrings.resx$DimensionsLabel$Message
+msgid "Dimensions:"
+msgstr ""
+
+#: UiStrings.resx$DisplayNameLabel$Message
+msgid "Display name:"
+msgstr "Näyttönimi:"
+
+#: UiStrings.resx$DocumentCorrection$Message
+msgid "Document Correction"
+msgstr "Dokumentin Korjaus"
+
+#: MiscResources.resx$Donate$Message
+#: UiStrings.resx$Donate$Message
+msgid "Donate"
+msgstr "Lahjoita"
+
+#: UiStrings.resx$Done$Message
+msgid "Done"
+msgstr "Valmis"
+
+#: UiStrings.resx$Download$Message
+msgid "Download"
+msgstr "Lataa"
+
+#: MiscResources.resx$DownloadError$Message
+msgid "Download Error"
+msgstr "Latausvirhe"
+
+#: MiscResources.resx$DownloadNeeded$Message
+msgid "Download Needed"
+msgstr "Tarvitaan lataus"
+
+#: UiStrings.resx$DownloadProgressFormTitle$Message
+msgid "Download Progress"
+msgstr "Latauksen eteneminen"
+
+#: UiStrings.resx$Dpi$Message
+msgid "Dpi"
+msgstr ""
+
+#: SettingsResources.resx$Source_Duplex$Message
+msgid "Duplex"
+msgstr "Kaksipuoleinen"
+
+#: UiStrings.resx$EsclDriver$Message
+msgid "ESCL Driver"
+msgstr "ESCL- Ajuri"
+
+#: UiStrings.resx$EsclNetworkDriver$Message
+msgid "ESCL Network Driver"
+msgstr "ESCL Verkkoajuri"
+
+#: UiStrings.resx$EsclUsbDriver$Message
+msgid "ESCL USB Driver"
+msgstr "ESCL USB-ajuri"
+
+#: UiStrings.resx$Edit$Message
+msgid "Edit"
+msgstr "Muokkaa"
+
+#: UiStrings.resx$EditWithAppName$Message
+msgid "Edit with {0}"
+msgstr "Muokkaa sovelluksella {0}"
+
+#: UiStrings.resx$EditWith$Message
+#: UiStrings.resx$EditWithFormTitle$Message
+msgid "Edit with..."
+msgstr "Muokkaa sovelluksella..."
+
+#: UiStrings.resx$EmailAll$Message
+msgid "Email All"
+msgstr "Lähetä kaikki sähköpostitse"
+
+#: UiStrings.resx$EmailAllAsPdf$Message
+msgid "Email All as PDF"
+msgstr "Lähetä kaikki sähköpostilla PDF-muodossa"
+
+#: MiscResources.resx$EmailPdf$Message
+#: UiStrings.resx$EmailPdf$Message
+msgid "Email PDF"
+msgstr "Liitä PDF sähköpostiin"
+
+#: MiscResources.resx$EmailPdfProgress$Message
+msgid "Email PDF Progress"
+msgstr "PDF - postituksen eteneminen"
+
+#: UiStrings.resx$EmailSelected$Message
+msgid "Email Selected"
+msgstr "Lähetä valittu sähköpostilla"
+
+#: UiStrings.resx$EmailSelectedAsPdf$Message
+msgid "Email Selected as PDF"
+msgstr "Lähetä valittu PDF-tiedostona"
+
+#: UiStrings.resx$EmailSettings$Message
+#: UiStrings.resx$EmailSettingsFormTitle$Message
+msgid "Email Settings"
+msgstr "Sähköpostiasetukset"
+
+#: UiStrings.resx$EnableAutoSave$Message
+msgid "Enable Auto Save"
+msgstr "Salli automaattinen tallennus"
+
+#: UiStrings.resx$EnableDebugLogging$Message
+msgid "Enable debug logging"
+msgstr "Ota virheenkorjausloki käyttöön"
+
+#: UiStrings.resx$EncryptPdf$Message
+msgid "Encrypt PDF"
+msgstr "Salaa PDF"
+
+#: UiStrings.resx$Encryption$Message
+msgid "Encryption"
+msgstr "Salaus"
+
+#: MiscResources.resx$FileTypeEmf$Message
+msgid "Enhanced Windows MetaFile (*.emf)"
+msgstr "Edistynyt Windows-metatiedosto (*.emf)"
+
+#: MiscResources.resx$Error$Message
+#: UiStrings.resx$ErrorFormTitle$Message
+msgid "Error"
+msgstr "Virhe"
+
+#: UiStrings.resx$ErrorStartingApplication$Message
+msgid "Error starting application {0}"
+msgstr "Virhe käynnistettäessä sovellusta {0}"
+
+#: MiscResources.resx$EstimatedDownloadSize$Message
+#: UiStrings.resx$EstimatedDownloadSize$Message
+msgid "Estimated download size: {0} MB"
+msgstr "Arvioitu latauskoko {0} MB"
+
+#: MiscResources.resx$FileTypeExif$Message
+msgid "Exchangeable Image File (*.exif)"
+msgstr "Exif-tiedosto (*.exif)"
+
+#: UiStrings.resx$ExcludeBlankPages$Message
+msgid "Exclude blank pages"
+msgstr "Ohita tyhjät sivut"
+
+#: SettingsResources.resx$OcrMode_Fast$Message
+msgid "Fast"
+msgstr "Nopea"
+
+#: SettingsResources.resx$Source_Feeder$Message
+msgid "Feeder"
+msgstr "Syöttölaite"
+
+#: UiStrings.resx$FileNameLabel$Message
+msgid "File Name:"
+msgstr "Tiedoston nimi"
+
+#: UiStrings.resx$FilePathLabel$Message
+msgid "File Path:"
+msgstr "Tiedostopolku:"
+
+#: UiStrings.resx$FixWhiteBalanceAndRemoveNoise$Message
+msgid "Fix white balance and remove noise"
+msgstr "Korjaa valkotasapaino ja poista kohinaa"
+
+#: UiStrings.resx$Flip$Message
+msgid "Flip"
+msgstr "Käännä"
+
+#: UiStrings.resx$FlipBackSidesOfDuplexPages$Message
+msgid "Flip back sides of duplex pages"
+msgstr ""
+
+#: UiStrings.resx$FlipDuplexedPages$Message
+msgid "Flip duplexed pages"
+msgstr "Käännä kaksipuoleiset sivut"
+
+#: UiStrings.resx$JpegQualityHelp$Message
+msgid "For high JPEG qualities (80+), also increase Image Quality in your profile for best results."
+msgstr "Lisää myös kuvan laatua profiilissasi laadukkaita JPEG (80+) kuvia varten."
+
+#: MiscResources.resx$FileTypeGif$Message
+msgid "GIF File (*.gif)"
+msgstr "GIF-tiedosto (*.gif)"
+
+#: UiStrings.resx$GetMoreLanguages$Message
+msgid "Get more languages"
+msgstr "Hae lisää kieliä"
+
+#: SettingsResources.resx$Source_Glass$Message
+msgid "Glass"
+msgstr "Lasi"
+
+#: SettingsResources.resx$EmailProviderType_Gmail$Message
+msgid "Gmail"
+msgstr "Gmail"
+
+#: SettingsResources.resx$BitDepth_8Grayscale$Message
+msgid "Grayscale"
+msgstr "Harmaasävy"
+
+#: UiStrings.resx$HorizontalAlignLabel$Message
+msgid "Horizontal align:"
+msgstr "Vaaka-asettelu:"
+
+#: UiStrings.resx$Hour2Digit$Message
+msgid "Hour (0-23)"
+msgstr "Tunti (0-23)"
+
+#: UiStrings.resx$HueSaturation$Message
+msgid "Hue / Saturation"
+msgstr "Sävy / kylläisyys"
+
+#: UiStrings.resx$IpHost$Message
+msgid "IP/Host"
+msgstr "IP/Isäntä"
+
+#: UiStrings.resx$IconsFrom$Message
+msgid "Icons from:"
+msgstr "Käytettyjen kuvakkeiden lähde:"
+
+#: UiStrings.resx$Image$Message
+msgid "Image"
+msgstr "Kuva"
+
+#: MiscResources.resx$FileTypeImageFiles$Message
+msgid "Image Files"
+msgstr "Kuvatiedostot"
+
+#: UiStrings.resx$ImageQuality$Message
+msgid "Image Quality"
+msgstr "Kuvan laatu"
+
+#: UiStrings.resx$ImageSettings$Message
+#: UiStrings.resx$ImageSettingsFormTitle$Message
+msgid "Image Settings"
+msgstr "Kuva-asetukset"
+
+#: MiscResources.resx$ImageSaved$Message
+msgid "Image saved."
+msgstr "Kuva talletettu."
+
+#: UiStrings.resx$Import$Message
+msgid "Import"
+msgstr "Tuo"
+
+#: MiscResources.resx$ImportProgress$Message
+msgid "Import Progress"
+msgstr "Tuonnin eteneminen"
+
+#: MiscResources.resx$ImportingFormat$Message
+msgid "Importing {0}..."
+msgstr "Tuodaan {0}..."
+
+#: MiscResources.resx$Importing$Message
+msgid "Importing..."
+msgstr "Tuodaan..."
+
+#: MiscResources.resx$Install$Message
+msgid "Install {0}"
+msgstr "Asenna {0}"
+
+#: MiscResources.resx$InstallComplete$Message
+msgid "Installation Complete"
+msgstr "Asennettu"
+
+#: MiscResources.resx$InstallFailedTitle$Message
+msgid "Installation Failed"
+msgstr "Asennus epäonnistui"
+
+#: MiscResources.resx$InstallCompletePromptRestart$Message
+msgid "Installation complete. Do you want to restart NAPS2 now?"
+msgstr "Asennus on valmis. Halutatko käynnistään NAPS2:n uudelleen?"
+
+#: MiscResources.resx$InstallFailed$Message
+msgid "Installation failed."
+msgstr "Asennus epäonnistui."
+
+#: UiStrings.resx$Interface$Message
+msgid "Interface"
+msgstr "Käyttöliittymä"
+
+#: UiStrings.resx$Interleave$Message
+msgid "Interleave"
+msgstr "Lomita"
+
+#: MiscResources.resx$FileTypeJpeg$Message
+msgid "JPEG File (*.jpg, *.jpeg)"
+msgstr "JPEG-tiedosto (*.jpg, *.jpeg)"
+
+#: UiStrings.resx$JpegQualityLabel$Message
+msgid "JPEG quality:"
+msgstr ""
+
+#: MiscResources.resx$FileTypeJp2$Message
+msgid "JPEG2000 File (*.jp2, *.jpx)"
+msgstr "JPEG2000-tiedosto (*.jp2, *.jpx)"
+
+#: UiStrings.resx$JpegQuality$Message
+msgid "Jpeg Quality"
+msgstr "Jpeg - laatu"
+
+#: UiStrings.resx$KeepSession$Message
+msgid "Keep images across sessions"
+msgstr "Säilytä kuvat eri istunnoissa"
+
+#: UiStrings.resx$KeyboardShortcuts$Message
+#: UiStrings.resx$KeyboardShortcutsFormTitle$Message
+msgid "Keyboard Shortcuts"
+msgstr "Pikanäppäimet"
+
+#: UiStrings.resx$KeywordsLabel$Message
+msgid "Keywords:"
+msgstr "Avainsanat:"
+
+#: SettingsResources.resx$TiffComp_Lzw$Message
+msgid "LZW"
+msgstr "LZW"
+
+#: UiStrings.resx$Language$Message
+msgid "Language"
+msgstr "Kieli"
+
+#: MiscResources.resx$LeaveAReview$Message
+msgid "Leave a Review"
+msgstr "Jätä arviosi"
+
+#: SettingsResources.resx$HorizontalAlign_Left$Message
+msgid "Left"
+msgstr "Vasen"
+
+#: SettingsResources.resx$TwainImpl_Legacy$Message
+msgid "Legacy (native UI only)"
+msgstr "Perinteinen (vain natiivikäyttöliittymä)"
+
+#: SettingsResources.resx$Theme_Light$Message
+msgid "Light"
+msgstr "Vaalea"
+
+#: MiscResources.resx$ReviewPrompt$Message
+msgid "Like NAPS2?"
+msgstr "Pidätkö NAPS2:sta?"
+
+#: UiStrings.resx$LoadIn$Message
+msgid "Load images into NAPS2"
+msgstr "Lataa kuvia NAPS2:een"
+
+#: UiStrings.resx$MakePdfsSearchable$Message
+msgid "Make PDFs searchable using OCR"
+msgstr "Mahdollista haku PDF:issä optisen tekstintunnistuksen avulla"
+
+#: UiStrings.resx$ManualDuplex$Message
+#: UiStrings.resx$ManualDuplexFormTitle$Message
+msgid "Manual Duplex"
+msgstr ""
+
+#: UiStrings.resx$ManualDuplexPreview$Message
+msgid "Manual Duplex (preview)"
+msgstr ""
+
+#: UiStrings.resx$ManualIp$Message
+#: UiStrings.resx$ManualIpFormTitle$Message
+msgid "Manual IP"
+msgstr "Manuaalinen IP"
+
+#: UiStrings.resx$MaximumQuality$Message
+msgid "Maximum quality (large files)"
+msgstr "Korkein laatu (suuret tiedostot)"
+
+#: SettingsResources.resx$TwainImpl_MemXfer$Message
+msgid "Memory Transfer"
+msgstr ""
+
+#: UiStrings.resx$Metadata$Message
+msgid "Metadata"
+msgstr "Metatiedot"
+
+#: UiStrings.resx$Minute2Digit$Message
+msgid "Minute (00-59)"
+msgstr "Minuutti (00-59)"
+
+#: UiStrings.resx$Month2Digit$Message
+msgid "Month (01-12)"
+msgstr "Kuukausi (01-12)"
+
+#: UiStrings.resx$MoreInfo$Message
+msgid "More info"
+msgstr "Lisätietoja"
+
+#: UiStrings.resx$CropHelp$Message
+msgid "Mouse:\n"
+"Click and drag to move the crop handles.\n"
+"Or click and drag to draw the full area.\n\n"
+"Keyboard:\n"
+"Arrow keys move the bottom-right crop handle.\n"
+"Hold \"{0}\" to move the top-left handle instead.\n"
+"Hold \"{1}\" to move the whole selection at once.\n"
+"Hold \"{2}\" to move faster."
+msgstr ""
+
+#: UiStrings.resx$CombineHelp$Message
+msgid "Mouse:\n"
+"Click the buttons to change the combine orientation and alignment.\n\n"
+"Keyboard:\n"
+"Arrow keys change the combine orientation.\n"
+"Hold \"Shift\" to change the alignment instead (if the images aren't the same size)."
+msgstr ""
+
+#: UiStrings.resx$MoveDown$Message
+msgid "Move Down"
+msgstr "Siirrä alas"
+
+#: UiStrings.resx$MoveUp$Message
+msgid "Move Up"
+msgstr "Siirrä ylös"
+
+#: UiStrings.resx$OcrMultiLangFormTitle$Message
+msgid "Multiple Languages"
+msgstr "Useita kieliä"
+
+#: UiStrings.resx$MultipleLanguages$Message
+msgid "Multiple Languages..."
+msgstr "Useita kieliä..."
+
+#: UiStrings.resx$MultipleScansDelay$Message
+msgid "Multiple scans (fixed delay between scans)"
+msgstr "Monta skannausta (vakioviive skannausten välillä)"
+
+#: UiStrings.resx$MultipleScansPrompt$Message
+msgid "Multiple scans (prompt between scans)"
+msgstr "Monta skannausta (kysy skannausten välillä)"
+
+#: MiscResources.resx$NAPS2$Message
+#: SdkResources.resx$NAPS2$Message
+#: UiStrings.resx$Naps2$Message
+msgid "NAPS2"
+msgstr "NAPS2"
+
+#: UiStrings.resx$Naps2TitleFormat$Message
+msgid "NAPS2 - {0}"
+msgstr ""
+
+#: MiscResources.resx$DonatePrompt$Message
+msgid "NAPS2 is completely free. Consider making a donation."
+msgstr "NAPS2 on täysin ilmainen. Harkitsethan lahjoitusta."
+
+#: UiStrings.resx$NameOptional$Message
+msgid "Name (optional)"
+msgstr "Nimi (valinnainen)"
+
+#: MiscResources.resx$NameMissing$Message
+msgid "Name missing."
+msgstr "Nimi puuttuu."
+
+#: SettingsResources.resx$TwainImpl_NativeXfer$Message
+msgid "Native Transfer"
+msgstr "Natiivi Siirto"
+
+#: UiStrings.resx$New$Message
+msgid "New"
+msgstr "Uusi"
+
+#: UiStrings.resx$NewProfile$Message
+msgid "New Profile"
+msgstr "Uusi profiili"
+
+#: UiStrings.resx$Next$Message
+msgid "Next"
+msgstr "Seuraava"
+
+#: UiStrings.resx$BatchPromptFormTitle$Message
+msgid "Next Scan"
+msgstr "Seuraava skannaus"
+
+#: MiscResources.resx$NoDeviceSelected$Message
+#: SdkResources.resx$NoDeviceSelected$Message
+msgid "No device selected."
+msgstr "Laitetta ei valittu."
+
+#: UiStrings.resx$NoDevicesFound$Message
+msgid "No devices found."
+msgstr "Laitteita ei löytynyt."
+
+#: MiscResources.resx$NoPagesInFeeder$Message
+#: SdkResources.resx$NoPagesInFeeder$Message
+msgid "No pages are in the feeder."
+msgstr "Syöttölaite on tyjä."
+
+#: SettingsResources.resx$EmailProvider_NotSelected$Message
+msgid "No provider selected."
+msgstr "Tapaa ei ole valittu."
+
+#: MiscResources.resx$NoDevicesFound$Message
+#: SdkResources.resx$NoDevicesFound$Message
+msgid "No scanning device was found."
+msgstr "Skannauslaitetta ei löydy."
+
+#: MiscResources.resx$NoUpdates$Message
+msgid "No updates available."
+msgstr "Ei päivityksiä."
+
+#: SettingsResources.resx$TiffComp_None$Message
+msgid "None"
+msgstr "Ei mitään"
+
+#: UiStrings.resx$Naps2FullName$Message
+msgid "Not Another PDF Scanner"
+msgstr "Not Another PDF Scanner"
+
+#: UiStrings.resx$NotNow$Message
+msgid "Not Now"
+msgstr "Ei nyt"
+
+#: UiStrings.resx$NumberOfScansLabel$Message
+msgid "Number of scans:"
+msgstr "Skannauksia:"
+
+#: UiStrings.resx$Ocr$Message
+msgid "OCR"
+msgstr "OCR"
+
+#: UiStrings.resx$OcrDownloadFormTitle$Message
+msgid "OCR Download"
+msgstr "OCR lataus"
+
+#: MiscResources.resx$OcrProgress$Message
+msgid "OCR Progress"
+msgstr "OCR edistyminen"
+
+#: UiStrings.resx$OcrSetupFormTitle$Message
+msgid "OCR Setup"
+msgstr "OCR asetus"
+
+#: UiStrings.resx$OcrLanguageLabel$Message
+msgid "OCR language:"
+msgstr "OCR kieli:"
+
+#: UiStrings.resx$OcrModeLabel$Message
+msgid "OCR mode:"
+msgstr "OCR muoto:"
+
+#: UiStrings.resx$OK$Message
+msgid "OK"
+msgstr "OK"
+
+#: UiStrings.resx$OffsetWidth$Message
+msgid "Offset width based on alignment (WIA)"
+msgstr "Siirtymän suurus kohdistuksen perusteella (WIA)"
+
+#: SettingsResources.resx$TwainImpl_OldDsm$Message
+msgid "Old DSM"
+msgstr "Vanha DSM"
+
+#: UiStrings.resx$OneFilePerPage$Message
+msgid "One file per page"
+msgstr "Tiedosto joka sivusta"
+
+#: UiStrings.resx$OneFilePerScan$Message
+msgid "One file per scan"
+msgstr "Skannauksesta yksi tiedosto"
+
+#: MiscResources.resx$FilesCouldNotBeDownloaded$Message
+msgid "One or more files could not be downloaded."
+msgstr "Tiedosto(j)a ei voitu ladata."
+
+#: UiStrings.resx$SingleInstanceDesc$Message
+msgid "Only allow a single NAPS2 instance"
+msgstr "Salli vain yksi NAPS2-instanssi"
+
+#: UiStrings.resx$OpenFolder$Message
+msgid "Open Folder"
+msgstr "Avaa kansio"
+
+#: MiscResources.resx$ActiveOperations$Message
+msgid "Operation in Progress"
+msgstr "Toiminto käynnissä"
+
+#: SettingsResources.resx$EmailProviderType_OutlookNew$Message
+msgid "Outlook (new)"
+msgstr "Outlook (uusi)"
+
+#: SettingsResources.resx$EmailProviderType_OutlookWeb$Message
+msgid "Outlook Web Access"
+msgstr "Outlook Web-käyttö"
+
+#: UiStrings.resx$Output$Message
+msgid "Output"
+msgstr "Tulos"
+
+#: MiscResources.resx$OverwriteFile$Message
+msgid "Overwrite File"
+msgstr "Korvaa tiedosto"
+
+#: UiStrings.resx$OwnerPasswordLabel$Message
+msgid "Owner Password:"
+msgstr "Omistajan salasana:"
+
+#: MiscResources.resx$FileTypePdf$Message
+msgid "PDF Document (*.pdf)"
+msgstr "PDF-tiedosto (*.pdf)"
+
+#: UiStrings.resx$PdfSettings$Message
+#: UiStrings.resx$PdfSettingsFormTitle$Message
+msgid "PDF Settings"
+msgstr "PDF - asetukset"
+
+#: MiscResources.resx$PdfSaved$Message
+msgid "PDF saved."
+msgstr "PDF talletettu."
+
+#: SettingsResources.resx$PdfCompat_PdfA1B$Message
+msgid "PDF/A-1b"
+msgstr "PDF/A-1b"
+
+#: SettingsResources.resx$PdfCompat_PdfA2B$Message
+msgid "PDF/A-2b"
+msgstr "PDF/A-2b"
+
+#: SettingsResources.resx$PdfCompat_PdfA3B$Message
+msgid "PDF/A-3b"
+msgstr "PDF/A-3b"
+
+#: SettingsResources.resx$PdfCompat_PdfA3U$Message
+msgid "PDF/A-3u"
+msgstr "PDF/A-3u"
+
+#: MiscResources.resx$FileTypePng$Message
+msgid "PNG File (*.png)"
+msgstr "PNG-tiedosto (*.png)"
+
+#: UiStrings.resx$PageSizeLabel$Message
+msgid "Page size:"
+msgstr "Sivun koko:"
+
+#: UiStrings.resx$PagesReordered$Message
+msgid "Pages reordered."
+msgstr ""
+
+#: UiStrings.resx$PaperSourceLabel$Message
+msgid "Paper source:"
+msgstr "Paperilähde:"
+
+#: UiStrings.resx$PdfPasswordFormTitle$Message
+msgid "Password"
+msgstr "Salasana"
+
+#: UiStrings.resx$Paste$Message
+msgid "Paste"
+msgstr "Liitä"
+
+#: UiStrings.resx$PixelDimensionsLabel$Message
+msgid "Pixel dimensions:"
+msgstr ""
+
+#: UiStrings.resx$Placeholders$Message
+#: UiStrings.resx$PlaceholdersFormTitle$Message
+msgid "Placeholders"
+msgstr "Paikkamerkit"
+
+#: UiStrings.resx$Port$Message
+msgid "Port"
+msgstr "Portti"
+
+#: UiStrings.resx$PostProcessing$Message
+msgid "Post-processing"
+msgstr "Jälkikäsittely"
+
+#: UiStrings.resx$PreemptivelyOcrAfterScanning$Message
+msgid "Pre-emptively run OCR after scanning"
+msgstr "Suorita OCR ennalta skannauksen jälkeen"
+
+#: UiStrings.resx$PressStartWhenReady$Message
+msgid "Press Start when ready."
+msgstr "Paina Aloita, kun olet vlamis."
+
+#: UiStrings.resx$Preview$Message
+#: UiStrings.resx$PreviewFormTitle$Message
+msgid "Preview"
+msgstr "Esikatsele"
+
+#: UiStrings.resx$PreviewLabel$Message
+msgid "Preview:"
+msgstr "Esikatsele:"
+
+#: UiStrings.resx$Previous$Message
+msgid "Previous"
+msgstr "Edellinen"
+
+#: MiscResources.resx$Print$Message
+#: UiStrings.resx$Print$Message
+msgid "Print"
+msgstr "Tulosta"
+
+#: UiStrings.resx$EditProfileFormTitle$Message
+msgid "Profile Settings"
+msgstr "Profiiliasetukset"
+
+#: UiStrings.resx$ProfileLabel$Message
+msgid "Profile:"
+msgstr "Profiilit:"
+
+#: UiStrings.resx$Profiles$Message
+#: UiStrings.resx$ProfilesFormTitle$Message
+msgid "Profiles"
+msgstr "Profiilit"
+
+#: SettingsResources.resx$SaveButtonDefaultAction_PromptIfSelected$Message
+msgid "Prompt If Selected"
+msgstr "Kysy jos valittu"
+
+#: UiStrings.resx$PromptForFilePath$Message
+msgid "Prompt for file path"
+msgstr "Kysy tiedostopolkua"
+
+#: UiStrings.resx$Provider$Message
+msgid "Provider"
+msgstr "Palveluntarjoaja"
+
+#: UiStrings.resx$ReadyForScan$Message
+msgid "Ready for scan {0}."
+msgstr "Valmis skannaamaan {0}."
+
+#: UiStrings.resx$Recover$Message
+msgid "Recover"
+msgstr "Palauta"
+
+#: UiStrings.resx$RecoverFormTitle$Message
+msgid "Recover Scanned Images"
+msgstr "Palauta skannatut kuvat"
+
+#: MiscResources.resx$Recovering$Message
+msgid "Recovering..."
+msgstr "Palautetaan..."
+
+#: MiscResources.resx$RecoveryProgress$Message
+msgid "Recovery Progress"
+msgstr "Palauttamisen eteneminen"
+
+#: UiStrings.resx$Redo$Message
+msgid "Redo"
+msgstr "Tee uudelleen"
+
+#: UiStrings.resx$RedoFormat$Message
+msgid "Redo {0}"
+msgstr "Tee Uudelleen {0}"
+
+#: UiStrings.resx$RememberTheseSettings$Message
+msgid "Remember these settings"
+msgstr "Muista asetukset"
+
+#: UiStrings.resx$Reorder$Message
+msgid "Reorder"
+msgstr "Järjestä uudelleen"
+
+#: UiStrings.resx$Reset$Message
+msgid "Reset"
+msgstr "Palauta"
+
+#: MiscResources.resx$ResetImage$Message
+msgid "Reset Image"
+msgstr "Palauta kuva"
+
+#: UiStrings.resx$ResolutionDpiLabel$Message
+msgid "Resolution (dpi):"
+msgstr ""
+
+#: UiStrings.resx$ResolutionLabel$Message
+msgid "Resolution:"
+msgstr "Tarkkuus:"
+
+#: UiStrings.resx$RestoreDefaults$Message
+msgid "Restore Defaults"
+msgstr "Palauta oletusarvoihin"
+
+#: UiStrings.resx$Reverse$Message
+msgid "Reverse"
+msgstr "Taaksepäin"
+
+#: UiStrings.resx$ReverseAll$Message
+msgid "Reverse All"
+msgstr "Vaihda kaikkien arvot"
+
+#: UiStrings.resx$ReverseSelected$Message
+msgid "Reverse Selected"
+msgstr "Vaihda valittujen arvot"
+
+#: UiStrings.resx$ReverseBackSides$Message
+msgid "Reverse back sides"
+msgstr ""
+
+#: UiStrings.resx$Revert$Message
+msgid "Revert"
+msgstr "Palauta"
+
+#: SettingsResources.resx$HorizontalAlign_Right$Message
+msgid "Right"
+msgstr "Oikea"
+
+#: UiStrings.resx$Rotate$Message
+msgid "Rotate"
+msgstr "Käännä"
+
+#: UiStrings.resx$RotateLeft$Message
+msgid "Rotate Left"
+msgstr "Käännä vasemmalle"
+
+#: UiStrings.resx$RotateRight$Message
+msgid "Rotate Right"
+msgstr "Käännä oikealle"
+
+#: UiStrings.resx$RunInBackground$Message
+msgid "Run in Background"
+msgstr "Aja taustalla"
+
+#: MiscResources.resx$RunningOcr$Message
+msgid "Running OCR..."
+msgstr "Optinen tunnistus meneillään..."
+
+#: UiStrings.resx$SaneDriver$Message
+msgid "SANE Driver"
+msgstr "SANE - ajuri"
+
+#: UiStrings.resx$Save$Message
+msgid "Save"
+msgstr "Tallenna"
+
+#: SettingsResources.resx$SaveButtonDefaultAction_SaveAll$Message
+#: UiStrings.resx$SaveAll$Message
+msgid "Save All"
+msgstr "Tallenna kaikki"
+
+#: UiStrings.resx$SaveAllAsImages$Message
+msgid "Save All as Images"
+msgstr "Tallenna kaikki kuvina"
+
+#: UiStrings.resx$SaveAllAsPdf$Message
+msgid "Save All as PDF"
+msgstr "Tallenna kaikki PDF-muodossa"
+
+#: MiscResources.resx$SaveImages$Message
+#: UiStrings.resx$SaveImages$Message
+msgid "Save Images"
+msgstr "Tallenna kuvat"
+
+#: MiscResources.resx$SaveImagesProgress$Message
+msgid "Save Images Progress"
+msgstr "Kuvien tallennuksen eteneminen"
+
+#: MiscResources.resx$SavePdf$Message
+#: UiStrings.resx$SavePdf$Message
+msgid "Save PDF"
+msgstr "Tallenna PDF"
+
+#: MiscResources.resx$SavePdfProgress$Message
+msgid "Save PDF Progress"
+msgstr "PDF:n tallennuksen eteneminen"
+
+#: SettingsResources.resx$SaveButtonDefaultAction_SaveSelected$Message
+#: UiStrings.resx$SaveSelected$Message
+msgid "Save Selected"
+msgstr "Tallenna valitut"
+
+#: UiStrings.resx$SaveSelectedAsImages$Message
+msgid "Save Selected as Images"
+msgstr "Tallenna valitut kuvina"
+
+#: UiStrings.resx$SaveSelectedAsPdf$Message
+msgid "Save Selected as PDF"
+msgstr "Tallenna valitut PDF-muodossa"
+
+#: UiStrings.resx$SaveToSingleFile$Message
+msgid "Save to a single file"
+msgstr "Tallenna yhteen tiedostoon"
+
+#: UiStrings.resx$SaveToMultipleFiles$Message
+msgid "Save to multiple files"
+msgstr "Tallenna useaan tiedostoon"
+
+#: MiscResources.resx$BatchStatusSaving$Message
+msgid "Saving batch results..."
+msgstr "Tallennetaan sarjaskannauksen tuloksia..."
+
+#: MiscResources.resx$SavingFormat$Message
+msgid "Saving {0}..."
+msgstr "Tallennetaan {0}..."
+
+#: UiStrings.resx$ScaleWithWindow$Message
+msgid "Scale With Window"
+msgstr "Skaalaa ikkunan mukaan"
+
+#: UiStrings.resx$ScaleLabel$Message
+msgid "Scale:"
+msgstr "Kuvasuhde:"
+
+#: MiscResources.resx$Scan$Message
+#: UiStrings.resx$Scan$Message
+msgid "Scan"
+msgstr "Skannaa"
+
+#: UiStrings.resx$ScanConfig$Message
+msgid "Scan Configuration"
+msgstr "Skannausasetukset"
+
+#: SettingsResources.resx$ScanButtonDefaultAction_ScanWithDefaultProfile$Message
+#: UiStrings.resx$ScanWithDefaultProfile$Message
+msgid "Scan With Default Profile"
+msgstr "Skannaa Oletusprofiililla"
+
+#: UiStrings.resx$ScanWithNewProfile$Message
+msgid "Scan With New Profile"
+msgstr "Skannaa Uudella Profiili"
+
+#: UiStrings.resx$ScanWithProfile$Message
+msgid "Scan With Profile {0}"
+msgstr "Skannaa Profiililla {0}"
+
+#: MiscResources.resx$ScannedImage$Message
+msgid "Scanned Image"
+msgstr "Skannattu kuva"
+
+#: UiStrings.resx$ScannerSharing$Message
+#: UiStrings.resx$ScannerSharingFormTitle$Message
+msgid "Scanner Sharing"
+msgstr "Skannerin Jakaminen"
+
+#: MiscResources.resx$ScanPageProgress$Message
+msgid "Scanning page {0}"
+msgstr "Skannataan sivua {0}"
+
+#: MiscResources.resx$BatchStatusScanPage$Message
+msgid "Scanning page {0} (scan {1})..."
+msgstr "Skannataan sivua {0} (skannaus {1})..."
+
+#: MiscResources.resx$BatchStatusPage$Message
+#: MiscResources.resx$ScanProgressPage$Message
+msgid "Scanning page {0}..."
+msgstr "Skannataan sivua {0}..."
+
+#: UiStrings.resx$SearchingForDevices$Message
+msgid "Searching for devices..."
+msgstr "Etsitään laitteita..."
+
+#: UiStrings.resx$Second2Digit$Message
+msgid "Second (00-59)"
+msgstr "Sekunti (00-59)"
+
+#: UiStrings.resx$Select$Message
+msgid "Select"
+msgstr "Valitse"
+
+#: UiStrings.resx$SelectAll$Message
+msgid "Select All"
+msgstr "Valitse kaikki"
+
+#: UiStrings.resx$SelectDevice$Message
+msgid "Select Device"
+msgstr "Valitse laite"
+
+#: UiStrings.resx$SelectSource$Message
+msgid "Select Source"
+msgstr "Valitse mistä"
+
+#: MiscResources.resx$SelectProfileBeforeScan$Message
+msgid "Select a profile before clicking Scan."
+msgstr "Valitse profiili ennen kuin painat Skannaa."
+
+#: UiStrings.resx$OcrSelectLanguageLabel$Message
+msgid "Select one or more languages:"
+msgstr "Valitse yksi tai useampi kieli:"
+
+#: UiStrings.resx$CustomRotationHelp$Message
+msgid "Select the angle to rotate.\n"
+"Or click and drag to draw a line aligned with the page (vertically or horizontally)."
+msgstr ""
+
+#: MiscResources.resx$SelectedCount$Message
+msgid "Selected ({0})"
+msgstr "Valittu ({0})"
+
+#: UiStrings.resx$SeparateByPatchT$Message
+msgid "Separate files by Patch-T"
+msgstr "Erota tiedostot Patch-T - koodilla"
+
+#: UiStrings.resx$SetDefault$Message
+msgid "Set Default"
+msgstr "Aseta oletus"
+
+#: UiStrings.resx$Settings$Message
+#: UiStrings.resx$SettingsFormTitle$Message
+msgid "Settings"
+msgstr "Asetukset"
+
+#: UiStrings.resx$Share$Message
+msgid "Share"
+msgstr "Jaa"
+
+#: UiStrings.resx$ShareAsService$Message
+msgid "Share even when NAPS2 is closed"
+msgstr "Jaa vaikka NAPS2 olisi suljettu"
+
+#: UiStrings.resx$SharedDeviceFormTitle$Message
+msgid "Shared Scanner Settings"
+msgstr "Jaetut Skannerin Asetukset"
+
+#: UiStrings.resx$ScannerSharingIntro$Message
+msgid "Shared scanners can be used from other computers on the local network by selecting \"ESCL Driver\" in the other computer's NAPS2 profile settings."
+msgstr "Jaettuja skannereita voidaan käyttää muista paikallisessa verkossa olevista tietokoneista valitsemalla \"ESCL Driver\" toisen tietokoneen NAPS2-profiiliasetuksista."
+
+#: UiStrings.resx$Sharpen$Message
+msgid "Sharpen"
+msgstr "Terävöitä"
+
+#: UiStrings.resx$ShiftKey$Message
+msgid "Shift"
+msgstr "Vaihto"
+
+#: UiStrings.resx$Shortcut$Message
+msgid "Shortcut"
+msgstr "Pikavalinta"
+
+#: UiStrings.resx$Show$Message
+msgid "Show"
+msgstr "Näytä"
+
+#: UiStrings.resx$ShowProfilesToolbar$Message
+msgid "Show \"Profiles\" toolbar"
+msgstr "Näytä \"Profiilit\" työkalupalkki"
+
+#: UiStrings.resx$ShowNativeTwainProgress$Message
+msgid "Show native TWAIN progress"
+msgstr ""
+
+#: UiStrings.resx$ShowPageNumbers$Message
+msgid "Show page numbers"
+msgstr "Näytä sivunnumerot"
+
+#: UiStrings.resx$ToggleSidebar$Message
+msgid "Sidebar"
+msgstr "Sivupalkki"
+
+#: UiStrings.resx$SinglePageFiles$Message
+msgid "Single page files"
+msgstr "Yhden sivun tiedostot"
+
+#: UiStrings.resx$SingleScan$Message
+msgid "Single scan"
+msgstr "Yksittäisskannaus"
+
+#: UiStrings.resx$SkipSavePrompt$Message
+msgid "Skip save prompt"
+msgstr "Ohita talleta - kysymys"
+
+#: UiStrings.resx$Split$Message
+msgid "Split"
+msgstr "Jaa"
+
+#: UiStrings.resx$Start$Message
+msgid "Start"
+msgstr "Aloita"
+
+#: UiStrings.resx$StopScannerSharing$Message
+msgid "Stop Scanner Sharing"
+msgstr "Lopeta skannerin jako"
+
+#: UiStrings.resx$StretchToPageSize$Message
+msgid "Stretch to page size"
+msgstr "Venytä sivun kokoon"
+
+#: UiStrings.resx$SubjectLabel$Message
+msgid "Subject:"
+msgstr "Aihe:"
+
+#: MiscResources.resx$FileTypeTiff$Message
+msgid "TIFF File (*.tiff, *.tif)"
+msgstr "TIFF-tiedosto (*.tiff, *.tif)"
+
+#: UiStrings.resx$TwainDriver$Message
+msgid "TWAIN Driver"
+msgstr "TWAIN-ajuri"
+
+#: UiStrings.resx$TechnicalDetails$Message
+msgid "Technical Details"
+msgstr "Tekniset yksityiskohdat"
+
+#: MiscResources.resx$TesseractNotAvailable$Message
+#: SdkResources.resx$TesseractNotAvailable$Message
+msgid "The OCR engine is not available. Make sure to install the required package:"
+msgstr "OCR - moottori ei ole käytettävissä. Asenna tarvittava osat:"
+
+#: SdkResources.resx$OcrTimeout$Message
+msgid "The OCR operation timed out."
+msgstr "OCR-operaatio aikakatkaistiin."
+
+#: MiscResources.resx$SaneNotAvailable$Message
+#: SdkResources.resx$SaneNotAvailable$Message
+msgid "The SANE driver is not available. Make sure to install the required packages:"
+msgstr "SANE - ajuri ei ole käytettävissä. Asenna tarvittava osat:"
+
+#: MiscResources.resx$ImportErrorCouldNot$Message
+#: SdkResources.resx$ImportErrorCouldNot$Message
+msgid "The file '{0}' could not be imported."
+msgstr "Tiedostoa '{0}' ei voitu tuoda."
+
+#: MiscResources.resx$ImportErrorNAPS2Pdf$Message
+msgid "The file '{0}' could not be imported. Only PDF files generated by NAPS2 can be imported."
+msgstr "Tiedostoa '{0}' ei voitu tuoda. Vain NAPS2:lla luotuja PDF - tiedostoja voidaan tuoda."
+
+#: MiscResources.resx$FileInUse$Message
+msgid "The file could not be overwritten because it is currently in use."
+msgstr "Tiedostoa ei voitu korvata, koska se on käytössä."
+
+#: MiscResources.resx$ConfirmOverwriteFile$Message
+msgid "The file {0} already exists. Do you want to overwrite it?"
+msgstr "Tiedosto {0} on jo olemassa. Haluatko korvata tiedoston?"
+
+#: UiStrings.resx$EncryptedFilePrompt$Message
+msgid "The following file is encrypted and requires a password to open:"
+msgstr "Seuraava tiedosto on salattu ja tarvitsee salasanan avaukseen:"
+
+#: MiscResources.resx$DevicePaperJam$Message
+#: SdkResources.resx$DevicePaperJam$Message
+msgid "The scanner has a paper jam."
+msgstr "Skannerissa on paperitukos."
+
+#: MiscResources.resx$DeviceWarmingUp$Message
+#: SdkResources.resx$DeviceWarmingUp$Message
+msgid "The scanner is warming up."
+msgstr "Skanneri lämpiää."
+
+#: MiscResources.resx$DeviceCoverOpen$Message
+#: SdkResources.resx$DeviceCoverOpen$Message
+msgid "The scanner's cover is open."
+msgstr "Skannerin kansi on auki."
+
+#: MiscResources.resx$DriverNotSupported$Message
+#: SdkResources.resx$DriverNotSupported$Message
+msgid "The selected driver is not supported on this system."
+msgstr "Valittua ajuria ei tueta tässä järjestelmässä."
+
+#: MiscResources.resx$DeviceNotFound$Message
+#: SdkResources.resx$DeviceNotFound$Message
+msgid "The selected scanner could not be found."
+msgstr "Valittua skanneria ei löydy."
+
+#: MiscResources.resx$NoFeederSupport$Message
+#: SdkResources.resx$NoFeederSupport$Message
+msgid "The selected scanner does not support using a feeder. If your scanner does have a feeder, try using a different driver."
+msgstr "Valittu skanneri ei tue syöttölaitetta. Jos skannerissasi on syöttölaite, kokeile toista ajuria."
+
+#: MiscResources.resx$NoDuplexSupport$Message
+#: SdkResources.resx$NoDuplexSupport$Message
+msgid "The selected scanner does not support using duplex. If your scanner is supposed to support duplex, try using a different driver."
+msgstr "Valittu skanneri ei tue monipuoleisuutta. Jos skannerisi luultavasti tukee sitä, kokeile toista ajuria."
+
+#: MiscResources.resx$DeviceBusy$Message
+#: SdkResources.resx$DeviceBusy$Message
+msgid "The selected scanner is busy."
+msgstr "Valittu skanneri on varattu."
+
+#: MiscResources.resx$DeviceOffline$Message
+#: SdkResources.resx$DeviceOffline$Message
+msgid "The selected scanner is offline."
+msgstr "Valittu skanneri on offline-tilassa."
+
+#: SdkResources.resx$WorkerCrash$Message
+msgid "The worker process crashed."
+msgstr "Työprosessi kaatui."
+
+#: SdkResources.resx$WorkerCrashWindows$Message
+msgid "The worker process crashed. Check the Windows event viewer."
+msgstr "Työprosessi kaatui. Tarkista Windows-tapahtuman katselija."
+
+#: UiStrings.resx$ThemeLabel$Message
+msgid "Theme:"
+msgstr "Teema:"
+
+#: SettingsResources.resx$EmailProviderType_Thunderbird$Message
+msgid "Thunderbird"
+msgstr "Thunderbird"
+
+#: UiStrings.resx$TiffOptions$Message
+msgid "Tiff Options"
+msgstr "Tiff - vaihtoehdot"
+
+#: UiStrings.resx$TimeBetweenScansLabel$Message
+msgid "Time between scans (seconds):"
+msgstr "Aika skannausten välillä (sekuntia):"
+
+#: UiStrings.resx$TitleLabel$Message
+msgid "Title:"
+msgstr "Otsikko:"
+
+#: UiStrings.resx$ManualDuplexHelp$Message
+msgid "To scan both sides of a multi-page document with your feeder scanner, you can select \"Duplex\" as your paper source if your scanner supports it.\n"
+"      \n"
+"If your scanner doesn't support \"Duplex\" scanning, follow these instructions:\n"
+"1. Scan the front sides of the document\n"
+"2. Flip the document over\n"
+"3. Scan the back sides of the document\n"
+"4. Click \"Manual Duplex\"\n"
+"5. Depending on the physical orientation of your scanner, you may need to check \"Reverse back sides\""
+msgstr ""
+
+#: UiStrings.resx$Tools$Message
+msgid "Tools"
+msgstr "Työkalut"
+
+#: UiStrings.resx$TwainImplLabel$Message
+msgid "Twain Implementation:"
+msgstr "Twain - toteutus:"
+
+#: SettingsResources.resx$PageSize_Legal$Message
+msgid "US Legal (8.5x14 in)"
+msgstr "US Legal (8,5x14 tuumaa)"
+
+#: SettingsResources.resx$PageSize_Letter$Message
+msgid "US Letter (8.5x11 in)"
+msgstr "US Letter (8,5x11 tuumaa)"
+
+#: UiStrings.resx$Unassign$Message
+msgid "Unassign"
+msgstr "Poista määritys"
+
+#: UiStrings.resx$Undo$Message
+msgid "Undo"
+msgstr "Kumoa"
+
+#: UiStrings.resx$UndoFormat$Message
+msgid "Undo {0}"
+msgstr "Kumoa {0}"
+
+#: SdkResources.resx$UnknownScanner$Message
+msgid "Unknown Scanner"
+msgstr "Tuntematon skanneri"
+
+#: MiscResources.resx$UnsavedChanges$Message
+msgid "Unsaved Changes"
+msgstr "Tallentamattomia muutoksia"
+
+#: MiscResources.resx$UpdateProgress$Message
+msgid "Update Progress"
+msgstr "Päivityksen eteneminen"
+
+#: MiscResources.resx$UpdateCheckDisabled$Message
+msgid "Update checking is disabled."
+msgstr "Päivityksen tarkistus on poistettu käytöstä."
+
+#: MiscResources.resx$Updating$Message
+msgid "Updating..."
+msgstr "Päivitetään..."
+
+#: MiscResources.resx$UploadingEmail$Message
+msgid "Uploading email..."
+msgstr "Lähetään sähköpostia..."
+
+#: UiStrings.resx$UseJpegCompression$Message
+msgid "Use JPEG compression"
+msgstr ""
+
+#: UiStrings.resx$UseNativeUi$Message
+msgid "Use native UI"
+msgstr "Käytä laitteen käyttöliittymää"
+
+#: UiStrings.resx$UsePredefinedSettings$Message
+msgid "Use predefined settings"
+msgstr "Käytä esimääritettyjä asetuksia"
+
+#: UiStrings.resx$UserPasswordLabel$Message
+msgid "User Password:"
+msgstr "Käyttäjän salasana:"
+
+#: UiStrings.resx$OcrDownloadSummaryText$Message
+msgid "Using OCR requires you to download each language you want to scan."
+msgstr "OCR:n käyttäminen vaatii, että lataat kaikki kielet, joilla haluat skannata."
+
+#: MiscResources.resx$Version$Message
+#: SdkResources.resx$Version$Message
+msgid "Version {0}"
+msgstr "Versio {0}"
+
+#: UiStrings.resx$View$Message
+msgid "View"
+msgstr "Näytä"
+
+#: UiStrings.resx$WiaDriver$Message
+msgid "WIA Driver"
+msgstr "WIA-ajuri"
+
+#: UiStrings.resx$WaitingForTwain$Message
+msgid "Waiting for TWAIN to complete..."
+msgstr "Odotetaan TWAINin valmistumista..."
+
+#: UiStrings.resx$WaitingForAuthorization$Message
+msgid "Waiting for authorization..."
+msgstr "Odotetaan valtuutusta..."
+
+#: MiscResources.resx$BatchStatusWaitingForScan$Message
+msgid "Waiting for scan {0}..."
+msgstr "Odotetaan skannausta {0}..."
+
+#: UiStrings.resx$WhiteThreshold$Message
+msgid "White Threshold"
+msgstr "Valkoisen raja-arvo"
+
+#: UiStrings.resx$WiaVersionLabel$Message
+msgid "Wia Version:"
+msgstr "Wia-versio:"
+
+#: UiStrings.resx$Year4Digit$Message
+msgid "Year"
+msgstr "Vuosi"
+
+#: UiStrings.resx$Year2Digit$Message
+msgid "Year (00-99)"
+msgstr "Vuosi (00-99)"
+
+#: MiscResources.resx$PdfNoPermissionToExtractContent$Message
+#: SdkResources.resx$PdfNoPermissionToExtractContent$Message
+msgid "You do not have permission to copy content from the file '{0}'."
+msgstr "Sinulla ei ole oikeuksia kopioida tiedoston '{0}' sisältöä."
+
+#: MiscResources.resx$DontHavePermission$Message
+msgid "You don't have permission to save files at this location."
+msgstr "Sinulla ei ole oikeuksia tallentaa tiedostoja tänne."
+
+#: MiscResources.resx$ExitWithUnsavedChanges$Message
+msgid "You have unsaved changes. Are you sure you want to exit and discard those changes?"
+msgstr "Sinulla on tallentamattomia muutoksia. Oletko varma, että haluat lopettaa ja menettää muutokset?"
+
+#: UiStrings.resx$Zoom$Message
+msgid "Zoom"
+msgstr "Muuta kokoa"
+
+#: UiStrings.resx$ZoomActual$Message
+msgid "Zoom Actual"
+msgstr "Alkuperäiseen kokoon"
+
+#: UiStrings.resx$ZoomIn$Message
+msgid "Zoom In"
+msgstr "Suurenna"
+
+#: UiStrings.resx$ZoomOut$Message
+msgid "Zoom Out"
+msgstr "Pienennä"
+
+#: SettingsResources.resx$PageSizeUnit_Centimetre$Message
+msgid "cm"
+msgstr "cm"
+
+#: SettingsResources.resx$PageSizeUnit_Inch$Message
+msgid "in"
+msgstr "tuuma"
+
+#: SettingsResources.resx$PageSizeUnit_Millimetre$Message
+msgid "mm"
+msgstr "mm"
+
+#: MiscResources.resx$OfN$Message
+msgid "of {0}"
+msgstr "{0}:sta"
+
+#: SettingsResources.resx$TwainImpl_X64$Message
+msgid "x64"
+msgstr "x64"
+
+#: MiscResources.resx$NamedPageSizeFormat$Message
+msgid "{0} ({1}x{2} {3})"
+msgstr "{0} ({1}x{2} {3})"
+
+#: MiscResources.resx$ProgressFormat$Message
+msgid "{0} / {1}"
+msgstr "{0} / {1}"
+
+#: MiscResources.resx$SizeProgress$Message
+msgid "{0} / {1} MB"
+msgstr "{0} / {1} MB"
+
+#: MiscResources.resx$FilesProgressFormat$Message
+msgid "{0} / {1} files"
+msgstr "{0} / {1} tiedostoa"
+
+#: UiStrings.resx$DevicesFound$Message
+msgid "{0} devices found."
+msgstr "{0} laitetta löytyi."
+
+#: SettingsResources.resx$DpiFormat$Message
+msgid "{0} dpi"
+msgstr ""
+
+#: UiStrings.resx$RecoverPrompt$Message
+msgid "{0} image(s) scanned on {1} at {2} may not have been saved, and are recoverable. Do you want to recover them?"
+msgstr "{0} kuva(a) skannattu {1} {2} ei ehkä ole tallennettu ja voidaan palauttaa. Haluatko palauttaa?"
+
+#: MiscResources.resx$ImagesSaved$Message
+msgid "{0} images saved."
+msgstr "{0} kuva(a) tallennettu."
+
+#: MiscResources.resx$PdfStatus$Message
+#: UiStrings.resx$XOfY$Message
+msgid "{0} of {1}"
+msgstr "{0} / {1}"
+

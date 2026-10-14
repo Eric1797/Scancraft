@@ -1,0 +1,183 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="BitDepth_1BlackAndWhite" xml:space="preserve">
+    <value>שחור/לבן</value>
+  </data>
+  <data name="BitDepth_24Color" xml:space="preserve">
+    <value>צבע 24 סיביות</value>
+  </data>
+  <data name="BitDepth_8Grayscale" xml:space="preserve">
+    <value>גווני אפור</value>
+  </data>
+  <data name="DpiFormat" xml:space="preserve">
+    <value>{0} נק׳ לאינטש</value>
+  </data>
+  <data name="EmailProviderType_CustomSmtp" xml:space="preserve">
+    <value>SMTP בהתאמה אישית</value>
+  </data>
+  <data name="EmailProviderType_Gmail" xml:space="preserve">
+    <value>Gmail</value>
+  </data>
+  <data name="EmailProviderType_OutlookNew" xml:space="preserve">
+    <value>Outlook (חדש)</value>
+  </data>
+  <data name="EmailProviderType_OutlookWeb" xml:space="preserve">
+    <value>Outlook Web Access</value>
+  </data>
+  <data name="EmailProviderType_Thunderbird" xml:space="preserve">
+    <value>Thunderbird</value>
+  </data>
+  <data name="EmailProviderType_AppleMail" xml:space="preserve">
+    <value>דוא״ל Apple</value>
+  </data>
+  <data name="EmailProvider_NotSelected" xml:space="preserve">
+    <value>לא נבחר ספק.</value>
+  </data>
+  <data name="HorizontalAlign_Center" xml:space="preserve">
+    <value>ממורכז</value>
+  </data>
+  <data name="HorizontalAlign_Left" xml:space="preserve">
+    <value>שמאל</value>
+  </data>
+  <data name="HorizontalAlign_Right" xml:space="preserve">
+    <value>ימין</value>
+  </data>
+  <data name="PageSizeUnit_Centimetre" xml:space="preserve">
+    <value>ס״מ</value>
+  </data>
+  <data name="PageSizeUnit_Inch" xml:space="preserve">
+    <value>אינטש</value>
+  </data>
+  <data name="PageSizeUnit_Millimetre" xml:space="preserve">
+    <value>מ״מ</value>
+  </data>
+  <data name="PageSize_A3" xml:space="preserve">
+    <value>A3 (297x240 מ״מ)</value>
+  </data>
+  <data name="PageSize_A4" xml:space="preserve">
+    <value>A4 (210x297 מ״מ)</value>
+  </data>
+  <data name="PageSize_A5" xml:space="preserve">
+    <value>A5 (148x210 מ״מ)</value>
+  </data>
+  <data name="PageSize_B4" xml:space="preserve">
+    <value>B4 (250x353 מ״מ)</value>
+  </data>
+  <data name="PageSize_B5" xml:space="preserve">
+    <value>B5 (176x250 מ״מ)</value>
+  </data>
+  <data name="PageSize_Custom" xml:space="preserve">
+    <value>התאמה אישית…</value>
+  </data>
+  <data name="PageSize_Legal" xml:space="preserve">
+    <value>נייר US Legal (8.5x14 אינטש)</value>
+  </data>
+  <data name="PageSize_Letter" xml:space="preserve">
+    <value>נייר US Letter (8.5x11 אינטש)</value>
+  </data>
+  <data name="Resolution_Custom" xml:space="preserve">
+    <value>התאמה אישית…</value>
+  </data>
+  <data name="PdfCompat_Default" xml:space="preserve">
+    <value>ברירת מחדל</value>
+  </data>
+  <data name="PdfCompat_PdfA1B" xml:space="preserve">
+    <value>תקן PDF/A-1b</value>
+  </data>
+  <data name="PdfCompat_PdfA2B" xml:space="preserve">
+    <value>תקן PDF/A-2b</value>
+  </data>
+  <data name="PdfCompat_PdfA3B" xml:space="preserve">
+    <value>תקן PDF/A-3b</value>
+  </data>
+  <data name="PdfCompat_PdfA3U" xml:space="preserve">
+    <value>תקן PDF/A-3u</value>
+  </data>
+  <data name="Source_Duplex" xml:space="preserve">
+    <value>דופלקס (דו־צדדי)</value>
+  </data>
+  <data name="Source_Feeder" xml:space="preserve">
+    <value>מזין מסמכים</value>
+  </data>
+  <data name="Source_Glass" xml:space="preserve">
+    <value>זכוכית (משטח)</value>
+  </data>
+  <data name="TiffComp_Auto" xml:space="preserve">
+    <value>אוטומטי</value>
+  </data>
+  <data name="TiffComp_Ccitt4" xml:space="preserve">
+    <value>CCITT4</value>
+  </data>
+  <data name="TiffComp_Lzw" xml:space="preserve">
+    <value>LZW</value>
+  </data>
+  <data name="TiffComp_None" xml:space="preserve">
+    <value>אין</value>
+  </data>
+  <data name="TwainImpl_Default" xml:space="preserve">
+    <value>ברירת מחדל</value>
+  </data>
+  <data name="TwainImpl_Legacy" xml:space="preserve">
+    <value>מיושן (ממשק משתמש מקורי בלבד)</value>
+  </data>
+  <data name="TwainImpl_NativeXfer" xml:space="preserve">
+    <value>העברה טבעית</value>
+  </data>
+  <data name="TwainImpl_MemXfer" xml:space="preserve">
+    <value>העברת זיכרון</value>
+  </data>
+  <data name="TwainImpl_OldDsm" xml:space="preserve">
+    <value>מנהל מקורות נתונים ישן</value>
+  </data>
+  <data name="TwainImpl_X64" xml:space="preserve">
+    <value>x64</value>
+  </data>
+  <data name="WiaVersion_Default" xml:space="preserve">
+    <value>ברירת מחדל</value>
+  </data>
+  <data name="OcrMode_Fast" xml:space="preserve">
+    <value>מהיר</value>
+  </data>
+  <data name="OcrMode_Best" xml:space="preserve">
+    <value>מיטבי</value>
+  </data>
+  <data name="SaveButtonDefaultAction_SaveAll" xml:space="preserve">
+    <value>שמירה של הכול</value>
+  </data>
+  <data name="SaveButtonDefaultAction_SaveSelected" xml:space="preserve">
+    <value>שמירת הנבחרים</value>
+  </data>
+  <data name="SaveButtonDefaultAction_AlwaysPrompt" xml:space="preserve">
+    <value>תמיד לבקש אישור</value>
+  </data>
+  <data name="SaveButtonDefaultAction_PromptIfSelected" xml:space="preserve">
+    <value>לבקש אישור אם נבחר</value>
+  </data>
+  <data name="ScanButtonDefaultAction_ScanWithDefaultProfile" xml:space="preserve">
+    <value>לסרוק עם פרופיל ברירת המחדל</value>
+  </data>
+  <data name="ScanButtonDefaultAction_AlwaysPrompt" xml:space="preserve">
+    <value>תמיד לבקש אישור</value>
+  </data>
+  <data name="Theme_Default" xml:space="preserve">
+    <value>ברירת מחדל</value>
+  </data>
+  <data name="Theme_Light" xml:space="preserve">
+    <value>בהיר</value>
+  </data>
+  <data name="Theme_Dark" xml:space="preserve">
+    <value>כהה</value>
+  </data>
+</root>

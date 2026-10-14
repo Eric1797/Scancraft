@@ -1,0 +1,13 @@
+[package]
+name = "scancraft-ui-kit"
+description = "ScanCraft shared UI kit: theme tokens and widgets (theme derived from PdfCraft, see NOTICE)."
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+rust-version.workspace = true
+
+[lints]
+workspace = true
+
+[dependencies]
+egui = { workspace = true }

@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="DeviceNotFound" xml:space="preserve">
+    <value>Izabrani skener se ne može pronaći.</value>
+  </data>
+  <data name="DeviceOffline" xml:space="preserve">
+    <value>Izabrani skener je isključen.</value>
+  </data>
+  <data name="DeviceCommunicationFailure" xml:space="preserve">
+    <value>Prekinuta je komunikacija sa uređajem za skeniranje.</value>
+  </data>
+  <data name="NAPS2" xml:space="preserve">
+    <value>NAPS2</value>
+  </data>
+  <data name="NoDeviceSelected" xml:space="preserve">
+    <value>Nije izabran uređaj.</value>
+  </data>
+  <data name="NoDevicesFound" xml:space="preserve">
+    <value>Nije pronađen uređaj za skeniranje.</value>
+  </data>
+  <data name="UnknownDriverError" xml:space="preserve">
+    <value>Greška se pojavila kod drivera za skeniranje.</value>
+  </data>
+  <data name="Version" xml:space="preserve">
+    <value>Verzija {0}</value>
+  </data>
+  <data name="ImportErrorCouldNot" xml:space="preserve">
+    <value>Datoteka '{0}' se ne može uvesti.</value>
+  </data>
+  <data name="NoFeederSupport" xml:space="preserve">
+    <value>Izabrani skener nema podršku za korištenje ulagača papira. Ako skener ima ulagač papira, pokušajte s korištenjem drugog drajvera.</value>
+  </data>
+  <data name="NoPagesInFeeder" xml:space="preserve">
+    <value>Nema papira u ulagaču.</value>
+  </data>
+  <data name="PdfNoPermissionToExtractContent" xml:space="preserve">
+    <value>Nemate dozvolu za kopiranje sadržaja iz datoteke '{0}'.</value>
+  </data>
+  <data name="NoDuplexSupport" xml:space="preserve">
+    <value>Izabrani skener nema podršku za korištenje dupleksa - dvostranog skeniranja. Ako skener treba da podržava dupleks, pokušajte s korištenjem drugog drajvera.</value>
+  </data>
+  <data name="DeviceBusy" xml:space="preserve">
+    <value>Izabrani skener je zauzet.</value>
+  </data>
+  <data name="DeviceCoverOpen" xml:space="preserve">
+    <value>Poklopac skenera je otvoren.</value>
+  </data>
+  <data name="DevicePaperJam" xml:space="preserve">
+    <value>Papir je zaglavio u skeneru.</value>
+  </data>
+  <data name="DeviceWarmingUp" xml:space="preserve">
+    <value>Skener se zagrijava.</value>
+  </data>
+  <data name="SaneNotAvailable" xml:space="preserve">
+    <value>SANE drajver nije dostupan. Pobrinite se da instalirate potrebne pakete:</value>
+  </data>
+  <data name="TesseractNotAvailable" xml:space="preserve">
+    <value>Mehanizam OPZ-a nije dostupan. Pobrinite se da instalirate potreban paket:</value>
+  </data>
+  <data name="DriverNotSupported" xml:space="preserve">
+    <value>Izabrani drajver nije podržan na ovom sistemu.</value>
+  </data>
+  <data name="OcrError" xml:space="preserve">
+    <value>Pojavila se greška pri pokretanju OPZ.</value>
+  </data>
+  <data name="OcrTimeout" xml:space="preserve">
+    <value>Operacija OPZ-a je istekla.</value>
+  </data>
+  <data name="WorkerCrash" xml:space="preserve">
+    <value>Radni proces je prekinut.</value>
+  </data>
+  <data name="WorkerCrashWindows" xml:space="preserve">
+    <value>Radni proces je prekinut. Provjerite preglednik događaja u Windowsu.</value>
+  </data>
+  <data name="UnknownScanner" xml:space="preserve">
+    <value>Nepoznat skener</value>
+  </data>
+</root>

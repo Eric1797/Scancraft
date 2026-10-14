@@ -1,0 +1,19 @@
+[package]
+name = "scancraft"
+description = "ScanCraft desktop app: scan, organize, export."
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+rust-version.workspace = true
+
+[lints]
+workspace = true
+
+[dependencies]
+scancraft-engine = { workspace = true }
+scancraft-model = { workspace = true }
+scancraft-scan-core = { workspace = true }
+scancraft-scan-mock = { workspace = true }
+scancraft-ui-kit = { workspace = true }
+egui = { workspace = true }
+eframe = { workspace = true, features = ["default_fonts", "wgpu", "accesskit"] }

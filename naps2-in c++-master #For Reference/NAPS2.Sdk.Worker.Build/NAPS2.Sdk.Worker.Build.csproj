@@ -1,0 +1,33 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net10.0</TargetFramework>
+        <OutputType>WinExe</OutputType>
+        <LargeAddressAware>true</LargeAddressAware>
+        <RootNamespace>NAPS2.Sdk.Worker</RootNamespace>
+        <AssemblyName>NAPS2.Worker</AssemblyName>
+
+        <PlatformTarget>x86</PlatformTarget>
+
+        <Title>NAPS2.Sdk.Worker</Title>
+        <Product>NAPS2.Sdk.Worker</Product>
+        
+        <SelfContained>true</SelfContained>
+        <PublishSingleFile>true</PublishSingleFile>
+        <PublishTrimmed>true</PublishTrimmed>
+        <TrimMode>partial</TrimMode>
+        <RuntimeIdentifier>win-x86</RuntimeIdentifier>
+    </PropertyGroup>
+
+    <Import Project="..\NAPS2.Setup\targets\CommonTargets.targets" />
+
+    <ItemGroup>
+        <ProjectReference Include="..\NAPS2.Images.Gdi\NAPS2.Images.Gdi.csproj" />
+        <ProjectReference Include="..\NAPS2.Sdk\NAPS2.Sdk.csproj" />
+        <PackageReference Include="LargeAddressAware" Version="1.0.6" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <None Remove="*.targets" />
+    </ItemGroup>
+</Project>

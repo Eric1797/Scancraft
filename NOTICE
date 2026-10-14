@@ -1,0 +1,23 @@
+ScanCraft is licensed MIT OR Apache-2.0 (see LICENSE-MIT / LICENSE-APACHE
+to be added before first release; all code in this repo is original except
+as noted below).
+
+## Derived work
+
+- `crates/scancraft-ui-kit/src/theme.rs`: design tokens and egui style
+  derived from PdfCraft `crates/ui-egui/src/theme.rs`
+  (Copyright PdfCraft contributors, MIT OR Apache-2.0,
+  https://github.com/storytold/pdfcraft). Token values (light/dark color
+  tables, spacing, text styles) are intentionally identical so ScanCraft
+  looks like PdfCraft. Adapted: temp key renamed, font loading pointed at
+  ScanCraft's own `assets/fonts`, CJK/system-fallback loading removed
+  (returns with the localization milestone).
+- `assets/fonts/Inter-{Regular,Medium,SemiBold}.ttf` (OFL-1.1, Rasmus
+  Andersson) and `assets/fonts/JetBrainsMono-Regular.ttf` (OFL-1.1,
+  JetBrains), copied from the PdfCraft checkout which vendors them under
+  the same licence; see `ATTRIBUTION.toml` and `assets/fonts/OFL-*.txt`.
+
+## Trademarks
+
+The ArtCraft/PdfCraft names and logos are not used by this project.
+ScanCraft has its own Lucide-based mark (lands with the app icon, M8).
